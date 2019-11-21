@@ -15,7 +15,7 @@ class App extends Component {
   componentDidMount() {
     //WE WILL HAVE A CALL FROM THE BACK-END
   }
-  //ASYNC CALLS
+  //ASYNC CALLS --
 
   //RENDER/RETURN
   render() {
