@@ -20,10 +20,12 @@ class App extends Component {
   //RENDER/RETURN
   render() {
     return (
-      <div>
+      <div className="appJs-main-div">
+        <h2>Hello</h2>
         <MainContent />
-        <CreateNew />
-        <Update />
+
+        {/* <CreateNew />
+        <Update /> */}
       </div>
     );
   }
