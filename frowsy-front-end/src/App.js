@@ -10,9 +10,11 @@ class App extends Component {
     super(props);
     this.state = {
       tasks: [],
-      loggedIn: false
+      loggedIn: false,
+      user: {}
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogOut = this.handleLogOut.bind(this);
   }
   //BINDING STATEMENTS
   // }
@@ -20,6 +22,11 @@ class App extends Component {
   //WE WILL HAVE A CALL FROM THE BACK-END
   // }
   //ASYNC CALLS --
+  //LOGOUT
+  handleLogOut() {
+    console.log(this.state.user);
+  }
+
   handleAddUser(user) {
     console.log(user);
   }
@@ -27,7 +34,8 @@ class App extends Component {
     console.log(user.foundUser.tasks);
     this.setState({
       tasks: user.foundUser.tasks,
-      loggedIn: true
+      loggedIn: true,
+      user: user.foundUser
     });
   }
   //RENDER/RETURN
@@ -37,6 +45,9 @@ class App extends Component {
         <h2>Hello</h2>
         <button>Register</button>
         <button>Login</button>
+        {this.state.loggedIn && (
+          <button onClick={this.handleLogOut}>Log Out</button>
+        )}
         <NewUser handleAddUser={this.handleAddUser} />
         <Login handleLogin={this.handleLogin} />
 
