@@ -6,11 +6,14 @@ import Login from "./components/Login";
 import axios from "axios";
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //PROPERTIES FROM THE SCHEMS?
-  // };
+  constructor(props) {
+    super(props);
+    this.state = {
+      tasks: [],
+      loggedIn: false
+    };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
   //BINDING STATEMENTS
   // }
   // componentDidMount() {
@@ -21,7 +24,11 @@ class App extends Component {
     console.log(user);
   }
   handleLogin(user) {
-    console.log("session for " + user + "has started");
+    console.log(user.foundUser.tasks);
+    this.setState({
+      tasks: user.foundUser.tasks,
+      loggedIn: true
+    });
   }
   //RENDER/RETURN
   render() {
@@ -32,7 +39,8 @@ class App extends Component {
         <button>Login</button>
         <NewUser handleAddUser={this.handleAddUser} />
         <Login handleLogin={this.handleLogin} />
-        <MainContent />
+
+        {this.state.loggedIn && <MainContent />}
       </div>
     );
   }
