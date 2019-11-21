@@ -4,6 +4,7 @@ import MainContent from "./components/MainContent";
 import NewUser from "./components/NewUser";
 import Login from "./components/Login";
 import axios from "axios";
+const baseURL = "http://localhost:3003";
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +18,14 @@ class App extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
   //LOGOUT
-  handleLogOut() {
-    console.log(this.state.user);
+  async handleLogOut() {
+    const response = await axios.delete(`${baseURL}/sessions`);
+    console.log("logged out" + response);
+    this.setState({
+      tasks: [],
+      loggedIn: false,
+      user: {}
+    });
   }
 
   handleAddUser(user) {
