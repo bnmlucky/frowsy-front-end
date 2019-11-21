@@ -4,12 +4,12 @@ import MainContent from "./components/MainContent";
 import axios from "axios";
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
+  // constructor() {
+  //   super();
   //   this.state = {
-  //PROPERTIES FROM THE SCHEMS?
-  // };
-  //BINDING STATEMENTS
+  //     //PROPERTIES FROM THE SCHEMS?
+  //   };
+  //   //BINDING STATEMENTS
   // }
   // componentDidMount() {
   //WE WILL HAVE A CALL FROM THE BACK-END
