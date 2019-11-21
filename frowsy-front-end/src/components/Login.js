@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 const baseURL = "http://localhost:3003";
-class NewUser extends Component {
+
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -9,9 +10,9 @@ class NewUser extends Component {
       username: "",
       password: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleUserNameChange = this.handleUserNameChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleUserNameChange(event) {
     this.setState({ username: event.currentTarget.value });
@@ -22,13 +23,13 @@ class NewUser extends Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    const response = await axios.post(`${baseURL}/users`, {
+    const response = await axios.post(`${baseURL}/sessions`, {
       username: this.state.username,
       password: this.state.password
     });
 
     this.setState({ username: "", password: "" });
-    this.props.handleAddUser(response.data);
+    this.props.handleLogin(response.data);
   }
   render() {
     return (
@@ -51,11 +52,11 @@ class NewUser extends Component {
             value={this.state.password}
             placeholder="password"
           />
-          <input type="submit" value="Register" />
+          <input type="submit" value="Login" />
         </form>
       </div>
     );
   }
 }
 
-export default NewUser;
+export default Login;
