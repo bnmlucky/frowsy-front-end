@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
-import CreateNew from "./components/CreateNew";
 import MainContent from "./components/MainContent";
-import Update from "./components/Update";
+import axios from "axios";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      //PROPERTIES FROM THE SCHEMS?
-    };
-    //BINDING STATEMENTS
-  }
-  componentDidMount() {
-    //WE WILL HAVE A CALL FROM THE BACK-END
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //PROPERTIES FROM THE SCHEMS?
+  // };
+  //BINDING STATEMENTS
+  // }
+  // componentDidMount() {
+  //WE WILL HAVE A CALL FROM THE BACK-END
+  // }
   //ASYNC CALLS --
 
   //RENDER/RETURN
@@ -23,9 +22,6 @@ class App extends Component {
       <div className="appJs-main-div">
         <h2>Hello</h2>
         <MainContent />
-
-        {/* <CreateNew />
-        <Update /> */}
       </div>
     );
   }
