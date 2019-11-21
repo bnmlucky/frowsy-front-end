@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
-import CreateNew from "../components/CreateNew";
-import Update from "../components/Update";
+import React, { Component } from “react”;
+import axios from “axios”;
+import CreateNew from “../components/CreateNew”;
+import Update from “../components/Update”;
+import Task from ‘./Task.js’
 import NewUser from "../components/NewUser";
 import { tsAnyKeyword } from "@babel/types";
 
@@ -34,6 +35,5 @@ class MainContent extends Component {
       </div>
     );
   }
-}
 
 export default MainContent;
