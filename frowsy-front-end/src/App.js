@@ -16,12 +16,6 @@ class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
   }
-  //BINDING STATEMENTS
-  // }
-  // componentDidMount() {
-  //WE WILL HAVE A CALL FROM THE BACK-END
-  // }
-  //ASYNC CALLS --
   //LOGOUT
   handleLogOut() {
     console.log(this.state.user);
@@ -43,6 +37,7 @@ class App extends Component {
     return (
       <div className="appJs-main-div">
         <h2>Hello</h2>
+
         <button>Register</button>
         <button>Login</button>
         {this.state.loggedIn && (
@@ -52,6 +47,7 @@ class App extends Component {
         <Login handleLogin={this.handleLogin} />
 
         {this.state.loggedIn && <MainContent />}
+        <MainContent />
       </div>
     );
   }
