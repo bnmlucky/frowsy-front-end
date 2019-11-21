@@ -21,6 +21,8 @@ class App extends Component {
     return (
       <div className="appJs-main-div">
         <h2>Hello</h2>
+        <button>Register</button>
+        <button>Login</button>
         <MainContent />
       </div>
     );
