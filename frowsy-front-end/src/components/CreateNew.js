@@ -15,6 +15,7 @@ class CreateNew extends Component {
     this.setState({
       tasks: event.currentTarget.value
     });
+    console.log(tasks);
   }
 
   async CreateNewTask(event) {
