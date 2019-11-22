@@ -15,13 +15,13 @@ class CreateNew extends Component {
     this.setState({
       tasks: event.currentTarget.value
     });
-    console.log(tasks);
+    console.log(this.state.tasks);
   }
 
   async CreateNewTask(event) {
     event.preventDefault();
     console.log(this.state.tasks);
-    // const taskDescription = { description: this.state.tasks };
+
     const response = await axios.post(`${baseURL}/tasks/${this.props.user}`, {
       description: this.state.tasks,
       progress: "todo"
