@@ -78,7 +78,7 @@ class App extends Component {
         <Login handleLogin={this.handleLogin} />
 
         {this.state.loggedIn && (
-          <MainContent userid={this.state.userid} tasks={this.state.tasks} />
+          <MainContent userid={this.state.userid} tasks={this.state.tasks} getTasks={this.getTasks} />
         )}
       </div>
     );
