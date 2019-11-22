@@ -18,28 +18,30 @@ class App extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
     this.getTasks = this.getTasks.bind(this);
   }
-  async componentDidMount() {
+  componentDidMount() {
     const localStorageLength = localStorage.length > 0;
     {
       localStorageLength && this.getTasks();
     }
   }
-  getTasks() {
-    console.log(localStorage);
+  async getTasks() {
+    const newTasks = await JSON.parse(localStorage.getItem("tasks"));
+
     this.setState({
-      tasks: localStorage.tasks,
+      tasks: newTasks,
       loggedIn: true,
       userid: localStorage.user
     });
+    console.log(this.state);
   }
   //LOGOUT
   async handleLogOut() {
     const response = await axios.delete(`${baseURL}/sessions`);
-    console.log("logged out" + response);
+    console.log(response);
     localStorage.clear();
-    console.log("local storage is blank" + localStorage);
+
     this.setState({
-      // tasks: [],
+      tasks: [],
       loggedIn: false,
       userid: ""
     });
@@ -49,19 +51,17 @@ class App extends Component {
     console.log(user);
   }
   handleLogin(user) {
-    // console.log(user.foundUser.tasks);
     let userKey = "user";
     let tasks = "tasks";
     localStorage.setItem(userKey, user.foundUser._id);
-    localStorage.setItem(tasks, user.foundUser.tasks);
-    // console.log(localStorage);
-
-    console.log("User Tasks:", user.foundUser.tasks);
+    localStorage.setItem(tasks, JSON.stringify(user.foundUser.tasks));
+    console.log(localStorage.tasks);
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,
       userid: user.foundUser._id
     });
+    console.log(this.state.tasks);
   }
   //RENDER/RETURN
   render() {
