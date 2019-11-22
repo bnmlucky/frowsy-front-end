@@ -7,7 +7,7 @@ class CreateNew extends Component {
     this.state = {
       tasks: []
     };
-    this.CreateNewTask = this.CreateNewTask.bind(this);
+    this.createNewTask = this.createNewTask.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -18,7 +18,7 @@ class CreateNew extends Component {
     console.log(this.state.tasks);
   }
 
-  async CreateNewTask(event) {
+  async createNewTask(event) {
     event.preventDefault();
     console.log(this.state.tasks);
 
@@ -31,11 +31,14 @@ class CreateNew extends Component {
   }
   render() {
     return (
-      <form onSubmit={this.CreateNewTask}>
+      <form onSubmit={this.createNewTask}>
         Task:
+        <label htmlFor="task"></label>
         <input
           type="text"
           name="task"
+          id="task"
+          value={this.state.tasks}
           placeholder="Tell us things..."
           onChange={this.handleChange}
         />
