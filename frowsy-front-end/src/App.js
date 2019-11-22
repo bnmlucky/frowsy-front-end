@@ -12,19 +12,36 @@ class App extends Component {
     this.state = {
       tasks: [],
       loggedIn: false,
-      user: {}
+      userid: ""
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
+    this.getTasks = this.getTasks.bind(this);
+  }
+  async componentDidMount() {
+    const localStorageLength = localStorage.length > 0;
+    {
+      localStorageLength && this.getTasks();
+    }
+  }
+  getTasks() {
+    console.log(localStorage);
+    this.setState({
+      tasks: localStorage.tasks,
+      loggedIn: true,
+      userid: localStorage.user
+    });
   }
   //LOGOUT
   async handleLogOut() {
     const response = await axios.delete(`${baseURL}/sessions`);
     console.log("logged out" + response);
+    localStorage.clear();
+    console.log("local storage is blank" + localStorage);
     this.setState({
       tasks: [],
       loggedIn: false,
-      user: {}
+      userid: ""
     });
   }
 
@@ -32,11 +49,16 @@ class App extends Component {
     console.log(user);
   }
   handleLogin(user) {
-    console.log(user.foundUser.tasks);
+    // console.log(user.foundUser.tasks);
+    let userKey = "user";
+    let tasks = "tasks";
+    localStorage.setItem(userKey, user.foundUser._id);
+    localStorage.setItem(tasks, user.foundUser.tasks);
+    // console.log(localStorage);
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,
-      user: user.foundUser
+      userid: user.foundUser._id
     });
   }
   //RENDER/RETURN
@@ -53,8 +75,9 @@ class App extends Component {
         <NewUser handleAddUser={this.handleAddUser} />
         <Login handleLogin={this.handleLogin} />
 
-        {this.state.loggedIn && <MainContent />}
-
+        {this.state.loggedIn && (
+          <MainContent userid={this.state.userid} tasks={this.state.tasks} />
+        )}
       </div>
     );
   }
