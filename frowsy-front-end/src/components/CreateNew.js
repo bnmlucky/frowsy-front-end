@@ -26,7 +26,9 @@ class CreateNew extends Component {
       description: this.state.tasks,
       progress: "todo"
     });
-    console.log(response);
+    const localStorageSave = await JSON.parse(localStorage.getItem("tasks"));
+    this.props.getTasks()
+    // console.log(response);
     this.setState({ tasks: [] });
   }
   render() {
