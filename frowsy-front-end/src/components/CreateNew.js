@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+const baseURL = "http://localhost:3003";
 class CreateNew extends Component {
   constructor() {
     super();
     this.state = {
-      tasks: ""
+      tasks: []
     };
     this.CreateNewTask = this.CreateNewTask.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -20,12 +20,14 @@ class CreateNew extends Component {
 
   async CreateNewTask(event) {
     event.preventDefault();
-    try {
-      const url = "http://localhost:3003/tasks";
-      await axios.post(url, { tasks: this.state.tasks, user: this.props.user });
-    } catch (error) {
-      console.log("We have an Error!", error);
-    }
+    console.log(this.state.tasks);
+    // const taskDescription = { description: this.state.tasks };
+    const response = await axios.post(`${baseURL}/tasks/${this.props.user}`, {
+      description: this.state.tasks,
+      progress: "todo"
+    });
+    console.log(response);
+    this.setState({ tasks: [] });
   }
   render() {
     return (
