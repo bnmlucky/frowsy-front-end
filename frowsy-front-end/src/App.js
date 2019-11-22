@@ -54,7 +54,7 @@ class App extends Component {
         <Login handleLogin={this.handleLogin} />
 
         {this.state.loggedIn && <MainContent />}
-        <MainContent />
+
       </div>
     );
   }
