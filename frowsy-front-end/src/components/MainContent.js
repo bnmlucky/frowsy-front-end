@@ -8,7 +8,7 @@ class MainContent extends Component {
   constructor() {
     super();
     this.state = {
-      user: this.user,
+      user: "",
       loggedIn: true,
       tasks: []
     };
@@ -16,7 +16,7 @@ class MainContent extends Component {
 
   componentDidMount() {
     const tasks = this.props.tasks;
-    this.setState({ task: tasks });
+    this.setState({ task: tasks, user: this.props.userid });
   }
 
   render() {
@@ -34,7 +34,7 @@ class MainContent extends Component {
           <div className="Doing">Doing:</div>
           <div className="Done">Done:</div>
           <br />
-          <CreateNew tasks={this.tasks} />
+          <CreateNew user={this.state.user} />
         </div>
         {/* );
         })} */}

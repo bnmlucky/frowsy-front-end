@@ -49,16 +49,14 @@ class App extends Component {
     console.log(user);
   }
   handleLogin(user) {
-<<<<<<< Updated upstream
     // console.log(user.foundUser.tasks);
     let userKey = "user";
     let tasks = "tasks";
     localStorage.setItem(userKey, user.foundUser._id);
     localStorage.setItem(tasks, user.foundUser.tasks);
     // console.log(localStorage);
-=======
+
     console.log("User Tasks:", user.foundUser.tasks);
->>>>>>> Stashed changes
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,
@@ -79,13 +77,9 @@ class App extends Component {
         <NewUser handleAddUser={this.handleAddUser} />
         <Login handleLogin={this.handleLogin} />
 
-<<<<<<< Updated upstream
         {this.state.loggedIn && (
           <MainContent userid={this.state.userid} tasks={this.state.tasks} />
         )}
-=======
-        {this.state.loggedIn && <MainContent tasks={this.state.tasks} />}
->>>>>>> Stashed changes
       </div>
     );
   }

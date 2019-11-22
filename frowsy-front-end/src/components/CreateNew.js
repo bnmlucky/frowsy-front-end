@@ -12,21 +12,16 @@ class CreateNew extends Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
     this.setState({
-      [name]: value
+      tasks: event.currentTarget.value
     });
   }
 
-  // ASYNC
   async CreateNewTask(event) {
+    event.preventDefault();
     try {
-      event.preventDefault();
       const url = "http://localhost:3003/tasks";
-      // const load = {
-      //   tasks: this.state.tasks
-      // };
-      await axios.post(url, { tasks: this.state.tasks });
+      await axios.post(url, { tasks: this.state.tasks, user: this.props.user });
     } catch (error) {
       console.log("We have an Error!", error);
     }
