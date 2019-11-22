@@ -39,7 +39,7 @@ class App extends Component {
     localStorage.clear();
     console.log("local storage is blank" + localStorage);
     this.setState({
-      tasks: [],
+      // tasks: [],
       loggedIn: false,
       userid: ""
     });
@@ -55,6 +55,8 @@ class App extends Component {
     localStorage.setItem(userKey, user.foundUser._id);
     localStorage.setItem(tasks, user.foundUser.tasks);
     // console.log(localStorage);
+
+    console.log("User Tasks:", user.foundUser.tasks);
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,

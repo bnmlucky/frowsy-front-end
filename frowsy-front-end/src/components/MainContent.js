@@ -2,31 +2,45 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateNew from "../components/CreateNew";
 import Update from "../components/Update";
-import Task from './Task.js'
+import Task from "./Task.js";
 
 class MainContent extends Component {
-    constructor() {
-        super()
-        this.state = {
+  constructor() {
+    super();
+    this.state = {
+      user: "",
+      loggedIn: true,
+      tasks: []
+    };
+  }
 
-        }
-    }
+  componentDidMount() {
+    const tasks = this.props.tasks;
+    this.setState({ task: tasks, user: this.props.userid });
+  }
 
-    render() {
-        return (
-            <div className="mainContent-main-div">
-                <h1>Frowsy</h1>
-                <h2>Main Content is here</h2>
-                <div className="ToDo">To Do:
+  render() {
+    return (
+      <main>
+        {/* {this.state.task(tasks => {
+          return ( */}
+        <div className="mainContent-main-div">
+          <h1>Frowsy</h1>
+          <h2>Main Content is here</h2>
+          <div className="ToDo">
+            To Do: {this.state.tasks}
             <Task />
-                </div>
-                <div className="Doing">Doing:</div>
-                <div className="Done">Done:</div>
-                <br />
-                <CreateNew />
-            </div>
-        );
-    }
+          </div>
+          <div className="Doing">Doing:</div>
+          <div className="Done">Done:</div>
+          <br />
+          <CreateNew user={this.state.user} />
+        </div>
+        {/* );
+        })} */}
+      </main>
+    );
+  }
 }
 
 export default MainContent;
