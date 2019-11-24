@@ -25,14 +25,17 @@ class App extends Component {
     }
   }
   async getTasks() {
-    const newTasks = await JSON.parse(localStorage.getItem("tasks"));
-
+    // const newTasks = await JSON.parse(localStorage.getItem("tasks"));
+    const userID = await localStorage.getItem('user')
+    const response = await axios.get(`${baseURL}/users/${userID}`);
+    console.log(response.data.foundUser.tasks)
     this.setState({
-      tasks: newTasks,
+      tasks: response.data.foundUser.tasks,
       loggedIn: true,
       userid: localStorage.user
     });
-    console.log(this.state);
+    // console.log(this.state);
+    console.log(userID)
   }
   //LOGOUT
   async handleLogOut() {
@@ -50,24 +53,25 @@ class App extends Component {
   handleAddUser(user) {
     console.log(user);
   }
-  handleLogin(user) {
+  async handleLogin(user) {
     let userKey = "user";
-    let tasks = "tasks";
+    // let tasks = "tasks";
     localStorage.setItem(userKey, user.foundUser._id);
-    localStorage.setItem(tasks, JSON.stringify(user.foundUser.tasks));
-    console.log(localStorage.tasks);
+    // localStorage.setItem(tasks, JSON.stringify(user.foundUser.tasks)); //We still get an error at this line when we restart the nodemon, but we can exit out of it.
+
+    // console.log(response);
+    // console.log(localStorage.tasks);
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,
       userid: user.foundUser._id
     });
-    console.log(this.state.tasks);
   }
   //RENDER/RETURN
   render() {
     return (
       <div className="appJs-main-div">
-        <h2>Hello</h2>
+        <h2>Frowsy</h2>
 
         <button>Register</button>
         <button>Login</button>
@@ -78,7 +82,7 @@ class App extends Component {
         <Login handleLogin={this.handleLogin} />
 
         {this.state.loggedIn && (
-          <MainContent userid={this.state.userid} tasks={this.state.tasks} getTasks={this.getTasks} />
+          <MainContent userid={this.state.userid} tasks={this.state.tasks} getTasks={this.getTasks} handleLogin={this.handleLogin} />
         )}
       </div>
     );
