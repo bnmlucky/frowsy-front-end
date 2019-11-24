@@ -19,14 +19,18 @@ h1 {
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+/* this piece needs to become horizontally scrollable */
 
 .flex-item {
   flex: 1;
+  padding: 10px;
   border: 1px solid purple;
-  align-items: center;
+  border-radius: 15px;
+  margin: 10px;
 }
+/* these vertical columns need to become vertically scrollable */
 
 .createNewDiv {
   text-align: center;
