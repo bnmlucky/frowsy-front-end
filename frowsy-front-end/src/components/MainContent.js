@@ -6,6 +6,7 @@ import Task from "./Task.js";
 import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -25,7 +26,7 @@ class MainContent extends Component {
     const userID = await localStorage.getItem("user");
     const taskID = task._id;
 
-    const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
+        const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
 
     this.props.getTasks();
   }
@@ -37,41 +38,47 @@ class MainContent extends Component {
     this.setState({ task: tasks, user: this.props.userid });
   }
 
-  render() {
-    return (
-      <main>
-        <CreateNew
-          user={this.state.user}
-          getTasks={this.props.getTasks}
-          handleAddTask={this.handleAddTask}
-        />
-        <br />
-        <div className="container">
-          To Do:
+
+    render() {
+        return (
+            <main>
+                <div className="createNewDiv">
+                    <CreateNew
+                        user={this.state.user}
+                        getTasks={this.props.getTasks}
+                        handleAddTask={this.handleAddTask}
+                    />
+                </div>
+                <br />
+                <div className="container">
+                    <div className="flex-item">
+                        To Do:
           {this.props.tasks.map(task => {
-            return (
-              <div className="ToDo" key={task._id}>
-                <ul>
-                  <li>
-                    {task.description} &nbsp;
+                            return (
+                                <div className="ToDo" key={task._id}>
+                                    <ul className="flex-item-2">
+                                        <li >
+                                            {task.description} &nbsp;
                     <button onClick={() => this.handleDeleteTask(task)}>
-                      &#128465;
+                                                &#128465;
                     </button>{" "}
                     &nbsp;
                     <button onClick={this.handleEditTask}>✎</button> &nbsp;
                     <EditTask task={task} getTasks={this.props.getTasks} />
+
                   </li>
-                </ul>
-              </div>
-            );
-          })}
-          <div className="Doing">Doing:</div>
-          <div className="Done">Done:</div>
-          <br />
-        </div>
-      </main>
-    );
-  }
+                                    </ul>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className="Doing flex-item">Doing:</div>
+                    <div className="Done flex-item">Done:</div>
+                    <br />
+                </div>
+            </main >
+        );
+    }
 }
 
 export default MainContent;
