@@ -3,34 +3,41 @@ import axios from "axios";
 import CreateNew from "../components/CreateNew";
 import Update from "../components/Update";
 import Task from "./Task.js";
+import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
-    constructor() {
-        super();
-        this.state = {
-            user: "",
-            loggedIn: true,
-            tasks: []
-        };
-        this.handleAddTask = this.handleAddTask.bind(this);
-        this.handleDeleteTask = this.handleDeleteTask.bind(this);
-    }
-    handleAddTask(task) {
-        console.log(task);
-        this.setState({ tasks: [...this.state.tasks, task] });
-    }
-    async handleDeleteTask(task) {
-        const userID = await localStorage.getItem("user");
-        const taskID = task._id;
+
+  constructor() {
+    super();
+    this.state = {
+      user: "",
+      loggedIn: true,
+      tasks: []
+    };
+    this.handleAddTask = this.handleAddTask.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this);
+  }
+  handleAddTask(task) {
+    console.log(task);
+    this.setState({ tasks: [...this.state.tasks, task] });
+  }
+  async handleDeleteTask(task) {
+    const userID = await localStorage.getItem("user");
+    const taskID = task._id;
 
         const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
 
-        this.props.getTasks();
-    }
-    componentDidMount() {
-        const tasks = this.props.tasks;
-        this.setState({ task: tasks, user: this.props.userid });
-    }
+    this.props.getTasks();
+  }
+  handleEditTask(event) {
+    console.log("edit task clicked");
+  }
+  componentDidMount() {
+    const tasks = this.props.tasks;
+    this.setState({ task: tasks, user: this.props.userid });
+  }
+
 
     render() {
         return (
@@ -55,8 +62,10 @@ class MainContent extends Component {
                     <button onClick={() => this.handleDeleteTask(task)}>
                                                 &#128465;
                     </button>{" "}
-                                            &nbsp;
-                    <button>✎</button> &nbsp;
+                    &nbsp;
+                    <button onClick={this.handleEditTask}>✎</button> &nbsp;
+                    <EditTask task={task} getTasks={this.props.getTasks} />
+
                   </li>
                                     </ul>
                                 </div>
