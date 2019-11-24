@@ -26,27 +26,35 @@ class CreateNew extends Component {
       progress: "todo"
     });
     //do we need to have a get request as well to get all the tasks, not just post?
-    const localStorageSave = await JSON.parse(localStorage.getItem("tasks")); //are we using this variable anywhere?  
-    this.props.getTasks()
+    const localStorageSave = await JSON.parse(localStorage.getItem("tasks")); //are we using this variable anywhere?
+    this.props.getTasks();
     // console.log(response);
     this.setState({ tasks: [] });
-    this.props.handleAddTask(response.data)//why is the array empty? Do we need a spread operator?  We tried it but it broke.
+    this.props.handleAddTask(response.data); //why is the array empty? Do we need a spread operator?  We tried it but it broke.
   }
 
   render() {
     return (
       <form onSubmit={this.createNewTask}>
         Task:
-        <label htmlFor="task"></label>
-        <input
-          type="text"
-          name="task"
-          id="task"
-          value={this.state.tasks}
-          placeholder="Tell us things..."
-          onChange={this.handleChange}
-        />
-        <input type="submit" value="Add" />
+        <div class="input-group mb-3">
+          <label htmlFor="task"></label>
+          <input
+            type="text"
+            name="task"
+            id="task"
+            class="form-control"
+            value={this.state.tasks}
+            placeholder="Tell us things..."
+            onChange={this.handleChange}
+          />
+          <input
+            type="submit"
+            value="Add"
+            class="btn btn-outline-secondary"
+            id="button-addon2"
+          />
+        </div>
       </form>
     );
   }

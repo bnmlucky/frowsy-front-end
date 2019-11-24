@@ -4,6 +4,7 @@ import MainContent from "./components/MainContent";
 import NewUser from "./components/NewUser";
 import Login from "./components/Login";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 const baseURL = "http://localhost:3003";
 
 class App extends Component {
@@ -26,16 +27,16 @@ class App extends Component {
   }
   async getTasks() {
     // const newTasks = await JSON.parse(localStorage.getItem("tasks"));
-    const userID = await localStorage.getItem('user')
+    const userID = await localStorage.getItem("user");
     const response = await axios.get(`${baseURL}/users/${userID}`);
-    console.log(response.data.foundUser.tasks)
+    console.log(response.data.foundUser.tasks);
     this.setState({
       tasks: response.data.foundUser.tasks,
       loggedIn: true,
       userid: localStorage.user
     });
     // console.log(this.state);
-    console.log(userID)
+    console.log(userID);
   }
   //LOGOUT
   async handleLogOut() {
@@ -82,7 +83,12 @@ class App extends Component {
         <Login handleLogin={this.handleLogin} />
 
         {this.state.loggedIn && (
-          <MainContent userid={this.state.userid} tasks={this.state.tasks} getTasks={this.getTasks} handleLogin={this.handleLogin} />
+          <MainContent
+            userid={this.state.userid}
+            tasks={this.state.tasks}
+            getTasks={this.getTasks}
+            handleLogin={this.handleLogin}
+          />
         )}
       </div>
     );
