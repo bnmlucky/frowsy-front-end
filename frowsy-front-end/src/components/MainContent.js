@@ -12,8 +12,13 @@ class MainContent extends Component {
             loggedIn: true,
             tasks: []
         };
+        this.handleAddTask = this.handleAddTask.bind(this)
     }
+    handleAddTask(task) {
+        console.log(task)
+        this.setState({ tasks: [...this.state.tasks, task] })
 
+    }
     componentDidMount() {
         const tasks = this.props.tasks;
         this.setState({ task: tasks, user: this.props.userid });
@@ -22,24 +27,28 @@ class MainContent extends Component {
     render() {
         return (
             <main>
-                To Do:
-                {this.props.tasks.map(task => {
-                    return (
-                        <div className="ToDo" key={task._id}>
-                            <ul>
-                                <li>
-                                    test1
-                                        {task.description}
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                }
-                )}
-                <div className="Doing">Doing:</div>
-                <div className="Done">Done:</div>
+                <CreateNew user={this.state.user} getTasks={this.props.getTasks} handleAddTask={this.handleAddTask} />
                 <br />
-                <CreateNew user={this.state.user} getTasks={this.props.getTasks} />
+                <div className="container">
+                    To Do:
+                {this.props.tasks.map(task => {
+                        return (
+                            <div className="ToDo" key={task._id}>
+                                <ul>
+                                    <li>
+                                        {task.description} &nbsp;
+                                     <button>&#128465;</button> &nbsp;
+                                     <button>✎</button> &nbsp;
+                             </li>
+                                </ul>
+                            </div>
+                        )
+                    }
+                    )}
+                    <div className="Doing">Doing:</div>
+                    <div className="Done">Done:</div>
+                    <br />
+                </div>
             </main >
         );
     }

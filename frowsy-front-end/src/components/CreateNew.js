@@ -21,16 +21,18 @@ class CreateNew extends Component {
   async createNewTask(event) {
     event.preventDefault();
     console.log(this.state.tasks);
-
     const response = await axios.post(`${baseURL}/tasks/${this.props.user}`, {
       description: this.state.tasks,
       progress: "todo"
     });
-    const localStorageSave = await JSON.parse(localStorage.getItem("tasks"));
+    //do we need to have a get request as well to get all the tasks, not just post?
+    const localStorageSave = await JSON.parse(localStorage.getItem("tasks")); //are we using this variable anywhere?  
     this.props.getTasks()
     // console.log(response);
     this.setState({ tasks: [] });
+    this.props.handleAddTask(response.data)//why is the array empty? Do we need a spread operator?  We tried it but it broke.
   }
+
   render() {
     return (
       <form onSubmit={this.createNewTask}>

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa&display=swap');
+
+* {
+  font-family: 'Comfortaa', cursive;
+}
+
 h1 {
   color: red;
 }
