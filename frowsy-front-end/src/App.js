@@ -71,16 +71,15 @@ class App extends Component {
   render() {
     return (
       <div className="appJs-main-div">
-        <h2>Frowsy</h2>
+        <div className="topDivHeaderRegisterLogin">
+          <h2>Frowsy</h2>
 
-        <button>Register</button>
-        <button>Login</button>
-        {this.state.loggedIn && (
-          <button onClick={this.handleLogOut}>Log Out</button>
-        )}
-        <NewUser handleAddUser={this.handleAddUser} />
-        <Login handleLogin={this.handleLogin} />
-
+          {this.state.loggedIn && (
+            <button onClick={this.handleLogOut}>Log Out</button>
+          )}
+          <NewUser handleAddUser={this.handleAddUser} />
+          <Login handleLogin={this.handleLogin} />
+        </div>
         {this.state.loggedIn && (
           <MainContent userid={this.state.userid} tasks={this.state.tasks} getTasks={this.getTasks} handleLogin={this.handleLogin} />
         )}

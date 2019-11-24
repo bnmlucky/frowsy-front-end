@@ -10,8 +10,31 @@ h1 {
 
 .appJs-main-div {
   border: 1px solid red;
+ 
 }
 
 .mainContent-main-div {
   border: 1px solid blue;
 }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-item {
+  flex: 1;
+  border: 1px solid purple;
+  align-items: center;
+}
+
+.createNewDiv {
+  text-align: center;
+  margin-top: 2%;
+}
+
+.topDivHeaderRegisterLogin {
+  text-align: center;
+}
+
+
