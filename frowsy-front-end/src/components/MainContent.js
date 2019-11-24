@@ -3,6 +3,7 @@ import axios from "axios";
 import CreateNew from "../components/CreateNew";
 import Update from "../components/Update";
 import Task from "./Task.js";
+import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
   constructor() {
@@ -14,6 +15,7 @@ class MainContent extends Component {
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this);
   }
   handleAddTask(task) {
     console.log(task);
@@ -26,6 +28,9 @@ class MainContent extends Component {
     const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
 
     this.props.getTasks();
+  }
+  handleEditTask(event) {
+    console.log("edit task clicked");
   }
   componentDidMount() {
     const tasks = this.props.tasks;
@@ -53,7 +58,8 @@ class MainContent extends Component {
                       &#128465;
                     </button>{" "}
                     &nbsp;
-                    <button>✎</button> &nbsp;
+                    <button onClick={this.handleEditTask}>✎</button> &nbsp;
+                    <EditTask task={task} getTasks={this.props.getTasks} />
                   </li>
                 </ul>
               </div>
