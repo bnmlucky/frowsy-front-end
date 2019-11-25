@@ -26,7 +26,9 @@
   margin: 10px;
   height: 40rem;
   overflow-y: auto;
- 
+}
+.flex-item::-webkit-scrollbar {
+  display: none;
 }
 /* these vertical columns need to become vertically scrollable */
 
@@ -50,29 +52,30 @@ h1 {
   align-items: center;
   position: sticky;
   top: 0;
-  color: #0b3954;
+  color: #ff6528;
   background-color: white;
   font-weight: bold;
+  padding: 1.5%;
+  z-index: 10;
 }
 
 li {
   background-color: white;
   list-style-type: none;
   margin-left: auto;
-  border-radius: 15px;
   padding-top: 5px;
 }
 
-#ToDoDiv,
-ul {
+#ToDoDiv {
   background-color: #ff934f;
-  
 }
 
 ul,
 li {
+  border-radius: 15px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 5px;
 }
 
 #DoingDiv {
@@ -101,4 +104,21 @@ p {
 
 .editContainer {
   background-color: transparent;
+}
+
+.ToDo, .Doing, .Done {
+  border-radius: 15px;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  color: #ff9369;
+  background-color: white;
+  padding: 0.5%;
+  z-index: 9;
 }

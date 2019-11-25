@@ -109,6 +109,7 @@ class App extends Component {
               <button onClick={this.handleLogOut}>Log Out</button>
             )}
           </div>
+          <footer>Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova</footer>
         </div>
       </Router>
     );
