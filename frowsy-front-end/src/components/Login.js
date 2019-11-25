@@ -54,7 +54,7 @@ class Login extends Component {
             value={this.state.password}
             placeholder="Password"
           />
-          <input type="submit" className="btn btn-primary" value="Login" />
+          <input type="submit" className="login-button btn btn-primary" value="Log In" />
         </form>
       </div>
     );
