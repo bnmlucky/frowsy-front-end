@@ -73,10 +73,20 @@ class App extends Component {
           <div className="topDivHeaderRegisterLogin">
             <h1>F R O W S Y</h1>
             <nav className="navigation">
-              <Link className="navigation-link" to="/Home">Home</Link>
-              <Link className="navigation-link" to="/NewUser">Create Account</Link>
-              <Link className="navigation-link" to="/LogIn">Log In</Link>
-              {localStorage.length > 0 && <Link className="navigation-link" to="/Tasks">My Tasks</Link>}
+              <Link className="navigation-link" to="/Home">
+                Home
+              </Link>
+              <Link className="navigation-link" to="/NewUser">
+                Create Account
+              </Link>
+              <Link className="navigation-link" to="/LogIn">
+                Log In
+              </Link>
+              {localStorage.length > 0 && (
+                <Link className="navigation-link" to="/Tasks">
+                  My Tasks
+                </Link>
+              )}
             </nav>
             <Route path="/Home" exact component={Home} />
             <Route
@@ -106,10 +116,14 @@ class App extends Component {
               />
             )}
             {this.state.loggedIn && (
-              <button className="logout-button" onClick={this.handleLogOut}>Log Out</button>
+              <button className="logout-button" onClick={this.handleLogOut}>
+                Log Out
+              </button>
             )}
           </div>
-          <footer>Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova</footer>
+          <footer>
+            Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova
+          </footer>
         </div>
       </Router>
     );

@@ -46,7 +46,6 @@ class EditTask extends Component {
             value={this.state.description}
             placeholder={this.props.task.description}
           />
-
           <input type="submit" value="Edit Task" />
         </form>
       </div>
