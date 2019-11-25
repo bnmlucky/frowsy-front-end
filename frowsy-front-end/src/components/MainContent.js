@@ -50,7 +50,7 @@ class MainContent extends Component {
         <br />
         <div className="container">
           <div id="ToDoDiv" className="col" className="flex-item">
-            <p>TO DO</p>
+            <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
               return (
                 <div className="ToDo" key={task._id}>
@@ -82,10 +82,10 @@ class MainContent extends Component {
             })}
           </div>
           <div id="DoingDiv" className="col" className="Doing flex-item">
-            <p>DOING</p>
+            <p className="title">DOING</p>
           </div>
           <div id="DoneDiv" className="col" className="Done flex-item">
-            <p>DONE</p>
+            <p className="title">DONE</p>
           </div>
           <br />
         </div>

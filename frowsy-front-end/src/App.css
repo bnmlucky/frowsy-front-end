@@ -21,8 +21,6 @@
   border: 3px solid white;
   align-items: center;
   border-radius: 15px;
-  padding: 10px;
-  margin: 10px;
 }
 /* these vertical columns need to become vertically scrollable */
 
@@ -56,6 +54,7 @@ li {
   list-style-type: none;
   margin-left: auto;
   border-radius: 15px;
+  padding-top: 5px;
 }
 
 #ToDoDiv,
@@ -87,4 +86,12 @@ p {
 
 .LogInForm {
   padding: 2% 25% 2% 25%;
+}
+
+.title {
+  padding-top: 5px;
+}
+
+.editContainer {
+  background-color: transparent;
 }
