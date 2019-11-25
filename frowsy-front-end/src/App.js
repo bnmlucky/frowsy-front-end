@@ -72,11 +72,11 @@ class App extends Component {
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
             <h1>F R O W S Y</h1>
-            <nav>
-              <Link to="/Home">Home</Link>
-              <Link to="/NewUser">Create Account</Link>
-              <Link to="/LogIn">Log In</Link>
-              {localStorage.length > 0 && <Link to="/Tasks">My Tasks</Link>}
+            <nav className="navigation">
+              <Link className="navigation-link" to="/Home">Home</Link>
+              <Link className="navigation-link" to="/NewUser">Create Account</Link>
+              <Link className="navigation-link" to="/LogIn">Log In</Link>
+              {localStorage.length > 0 && <Link className="navigation-link" to="/Tasks">My Tasks</Link>}
             </nav>
             <Route path="/Home" exact component={Home} />
             <Route
