@@ -36,6 +36,19 @@ class MainContent extends Component {
   //     // console.log(this.props);
   //     this.props.handleLogOut();
   //   }
+  onDragOver(ev) {
+    ev.preventDefault();
+    // console.log(ev);
+  }
+  onDragStart(ev, id) {
+    console.log(id);
+    ev.dataTransfer.setData("text/plain", id);
+  }
+  onDrop(ev, cat) {
+    console.log(ev, cat);
+    const id = ev.dataTransfer.getData("text");
+    console.log("this is id" + id);
+  }
   async handleChangeDoing(task) {
     // event.preventDefault();
     const taskId = task._id;
@@ -84,12 +97,22 @@ class MainContent extends Component {
         </div>
         <br />
         <div className="container">
-          <div id="ToDoDiv" className="col flex-item">
+          <div
+            id="ToDoDiv"
+            className="col flex-item"
+            onDragOver={e => this.onDragOver(e)}
+            onDrop={e => this.onDrop(e, "complete")}
+          >
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
               if (task.progress === "todo") {
                 return (
-                  <div className="ToDo" key={task._id}>
+                  <div
+                    className="ToDo"
+                    key={task._id}
+                    onDragStart={e => this.onDragStart(e, task._id)}
+                    draggable
+                  >
                     <ul className="flex-item-2">
                       <li>
                         {task.description} &nbsp;
@@ -121,12 +144,23 @@ class MainContent extends Component {
               }
             })}
           </div>
-          <div id="DoingDiv" className="col" className="Doing flex-item">
+          <div
+            id="DoingDiv"
+            className="col"
+            className="Doing flex-item"
+            onDragOver={e => this.onDragOver(e)}
+            onDrop={e => this.onDrop(e, "complete")}
+          >
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
               if (task.progress === "doing") {
                 return (
-                  <div className="Doing" key={task._id}>
+                  <div
+                    className="Doing"
+                    key={task._id}
+                    onDragStart={e => this.onDragStart(e, task._id)}
+                    draggable
+                  >
                     <ul className="flex-item-2">
                       <li>
                         {task.description} &nbsp;
@@ -162,12 +196,22 @@ class MainContent extends Component {
             })}
           </div>
 
-          <div id="DoneDiv" className="col Done flex-item">
+          <div
+            id="DoneDiv"
+            className="col Done flex-item"
+            onDragOver={e => this.onDragOver(e)}
+            onDrop={e => this.onDrop(e, "complete")}
+          >
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
               if (task.progress === "done") {
                 return (
-                  <div className="Done" key={task._id}>
+                  <div
+                    className="Done"
+                    key={task._id}
+                    onDragStart={e => this.onDragStart(e, task._id)}
+                    draggable
+                  >
                     <ul className="flex-item-2">
                       <li>
                         {task.description} &nbsp;
