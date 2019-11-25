@@ -46,6 +46,7 @@ class CreateNew extends Component {
             placeholder="Tell us the things you need to do..."
             onChange={this.handleChange}
           />
+          &nbsp;&nbsp;
           <input
             type="submit"
             value="Add"
