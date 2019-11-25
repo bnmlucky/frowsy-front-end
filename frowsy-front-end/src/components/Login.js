@@ -22,7 +22,7 @@ class Login extends Component {
   }
   async handleSubmit(event) {
     event.preventDefault();
-    console.log("hitting on submit function");
+
     const response = await axios.post(`${baseURL}/sessions`, {
       username: this.state.username,
       password: this.state.password
