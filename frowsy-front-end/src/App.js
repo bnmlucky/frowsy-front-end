@@ -106,7 +106,7 @@ class App extends Component {
               />
             )}
             {this.state.loggedIn && (
-              <button onClick={this.handleLogOut}>Log Out</button>
+              <button className="logout-button" onClick={this.handleLogOut}>Log Out</button>
             )}
           </div>
           <footer>Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova</footer>
