@@ -22,7 +22,7 @@ class Login extends Component {
   }
   async handleSubmit(event) {
     event.preventDefault();
-
+    console.log("hitting on submit function");
     const response = await axios.post(`${baseURL}/sessions`, {
       username: this.state.username,
       password: this.state.password
@@ -34,7 +34,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form className="LogInForm" onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="LogInForm">
           <label htmlFor="username"></label>
           <input
             type="text"
@@ -46,7 +46,7 @@ class Login extends Component {
             placeholder="Username"
           />
           <input
-            type="password"
+            type="text"
             className="form-control"
             id="exampleInputPassword1"
             name="password"
@@ -54,7 +54,7 @@ class Login extends Component {
             value={this.state.password}
             placeholder="Password"
           />
-          <input type="button" className="btn btn-primary" value="Login" />
+          <input type="submit" className="btn btn-primary" value="Login" />
         </form>
       </div>
     );
