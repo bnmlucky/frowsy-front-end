@@ -29,14 +29,14 @@ class App extends Component {
     // const newTasks = await JSON.parse(localStorage.getItem("tasks"));
     const userID = await localStorage.getItem("user");
     const response = await axios.get(`${baseURL}/users/${userID}`);
-    console.log(response.data.foundUser.tasks);
+    // console.log(response.data.foundUser.tasks);
     this.setState({
       tasks: response.data.foundUser.tasks,
       loggedIn: true,
       userid: localStorage.user
     });
     // console.log(this.state);
-    console.log(userID);
+    // console.log(userID);
   }
   //LOGOUT
   async handleLogOut() {
