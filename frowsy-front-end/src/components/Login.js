@@ -46,7 +46,7 @@ class Login extends Component {
             placeholder="Username"
           />
           <input
-            type="password"
+            type="text"
             className="form-control"
             id="exampleInputPassword1"
             name="password"

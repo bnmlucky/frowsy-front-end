@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateNew from "../components/CreateNew";
-import Update from "../components/Update";
-import Task from "./Task.js";
 import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
@@ -21,6 +19,7 @@ class MainContent extends Component {
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
     this.handleEditTask = this.handleEditTask.bind(this);
+    // this.handlelogOut = this.handlelogOut.bind(this);
   }
   handleEditTask() {
     // console.log("You click edit");
@@ -42,10 +41,13 @@ class MainContent extends Component {
     const taskID = task._id;
 
     const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
-
+    console.log(response);
     this.props.getTasks();
   }
-
+  //   handlelogOut() {
+  //     // console.log(this.props);
+  //     this.props.handleLogOut();
+  //   }
   async handleChangeDoing(task) {
     // event.preventDefault();
     const taskId = task._id;
@@ -54,6 +56,7 @@ class MainContent extends Component {
       description: task.description,
       assigned: "doing"
     });
+    console.log(response);
     this.props.getTasks();
   }
   async handleChangeToDo(task) {
@@ -63,6 +66,7 @@ class MainContent extends Component {
       description: task.description,
       assigned: "todo"
     });
+    console.log(response);
     this.props.getTasks();
   }
   async handleChangeDone(task) {
@@ -82,6 +86,7 @@ class MainContent extends Component {
   render() {
     return (
       <main>
+        {/* <button onClick={this.logOut}>LogOut</button> */}
         <div className="createNewDiv">
           <CreateNew
             user={this.state.user}
@@ -91,10 +96,10 @@ class MainContent extends Component {
         </div>
         <br />
         <div className="container">
-          <div id="ToDoDiv" className="col" className="flex-item">
+          <div id="ToDoDiv" className="col flex-item">
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "todo") {
+              if (task.progress === "todo") {
                 return (
                   <div className="ToDo" key={task._id}>
                     <ul className="flex-item-2">
@@ -160,7 +165,7 @@ class MainContent extends Component {
           <div id="DoingDiv" className="col" className="Doing flex-item">
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "doing") {
+              if (task.progress === "doing") {
                 return (
                   <div className="Doing" key={task._id}>
                     <ul className="flex-item-2">
@@ -224,10 +229,10 @@ class MainContent extends Component {
             })}
           </div>
 
-          <div id="DoneDiv" className="col" className="Done flex-item">
+          <div id="DoneDiv" className="col Done flex-item">
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "done") {
+              if (task.progress === "done") {
                 return (
                   <div className="Done" key={task._id}>
                     <ul className="flex-item-2">

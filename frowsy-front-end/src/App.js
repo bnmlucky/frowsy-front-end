@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./App.css";
 import MainContent from "./components/MainContent";
 import NewUser from "./components/NewUser";
+import Home from "./components/Home.js";
 import Login from "./components/Login";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,17 +28,14 @@ class App extends Component {
     }
   }
   async getTasks() {
-    // const newTasks = await JSON.parse(localStorage.getItem("tasks"));
     const userID = await localStorage.getItem("user");
     const response = await axios.get(`${baseURL}/users/${userID}`);
-    console.log(response.data.foundUser.tasks);
+
     this.setState({
       tasks: response.data.foundUser.tasks,
       loggedIn: true,
       userid: localStorage.user
     });
-    // console.log(this.state);
-    console.log(userID);
   }
   //LOGOUT
   async handleLogOut() {
@@ -56,39 +55,63 @@ class App extends Component {
   }
   async handleLogin(user) {
     let userKey = "user";
-    // let tasks = "tasks";
-    localStorage.setItem(userKey, user.foundUser._id);
-    // localStorage.setItem(tasks, JSON.stringify(user.foundUser.tasks)); //We still get an error at this line when we restart the nodemon, but we can exit out of it.
 
-    // console.log(response);
-    // console.log(localStorage.tasks);
+    localStorage.setItem(userKey, user.foundUser._id);
+
     this.setState({
       tasks: user.foundUser.tasks,
       loggedIn: true,
       userid: user.foundUser._id
     });
+    console.log(this.state.loggedIn);
   }
   //RENDER/RETURN
   render() {
     return (
-      <div className="appJs-main-div">
-        <h1>F R O W S Y</h1>
-        <div className="topDivHeaderRegisterLogin">
-          {this.state.loggedIn && (
-            <button onClick={this.handleLogOut}>Log Out</button>
-          )}
-          <NewUser handleAddUser={this.handleAddUser} />
-          <Login handleLogin={this.handleLogin} />
+      <Router>
+        <div className="appJs-main-div">
+          <div className="topDivHeaderRegisterLogin">
+            <h1>F R O W S Y</h1>
+            <nav className="navigation">
+              <Link className="navigation-link" to="/Home">Home</Link>
+              <Link className="navigation-link" to="/NewUser">Create Account</Link>
+              <Link className="navigation-link" to="/LogIn">Log In</Link>
+              {localStorage.length > 0 && <Link className="navigation-link" to="/Tasks">My Tasks</Link>}
+            </nav>
+            <Route path="/Home" exact component={Home} />
+            <Route
+              path="/NewUser"
+              render={props => (
+                <NewUser {...props} handleAddUser={this.handleAddUser} />
+              )}
+            />
+            <Route
+              path="/LogIn"
+              render={props => (
+                <Login {...props} handleLogin={this.handleLogin} />
+              )}
+            />
+            {this.state.loggedIn && (
+              <Route
+                path="/Tasks"
+                render={props => (
+                  <MainContent
+                    {...props}
+                    userid={this.state.userid}
+                    tasks={this.state.tasks}
+                    getTasks={this.getTasks}
+                    logOut={this.handleLogOut}
+                  />
+                )}
+              />
+            )}
+            {this.state.loggedIn && (
+              <button className="logout-button" onClick={this.handleLogOut}>Log Out</button>
+            )}
+          </div>
+          <footer>Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova</footer>
         </div>
-        {this.state.loggedIn && (
-          <MainContent
-            userid={this.state.userid}
-            tasks={this.state.tasks}
-            getTasks={this.getTasks}
-            handleLogin={this.handleLogin}
-          />
-        )}
-      </div>
+      </Router>
     );
   }
 }

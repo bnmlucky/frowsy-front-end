@@ -13,6 +13,7 @@
 .container {
   display: flex;
   justify-content: space-around;
+  
 }
 /* this piece needs to become horizontally scrollable */
 
@@ -21,6 +22,13 @@
   border: 3px solid white;
   align-items: center;
   border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  height: 40rem;
+  overflow-y: auto;
+}
+.flex-item::-webkit-scrollbar {
+  display: none;
 }
 /* these vertical columns need to become vertically scrollable */
 
@@ -44,28 +52,30 @@ h1 {
   align-items: center;
   position: sticky;
   top: 0;
-  color: #0b3954;
+  color: #ff6528;
   background-color: white;
   font-weight: bold;
+  padding: 1.5%;
+  z-index: 10;
 }
 
 li {
   background-color: white;
   list-style-type: none;
   margin-left: auto;
-  border-radius: 15px;
   padding-top: 5px;
 }
 
-#ToDoDiv,
-ul {
+#ToDoDiv {
   background-color: #ff934f;
 }
 
 ul,
 li {
+  border-radius: 15px;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 5px;
 }
 
 #DoingDiv {
@@ -101,4 +111,56 @@ p {
   text-align: center;
   display: flex;
   justify-content: center;
+}
+.ToDo, .Doing, .Done {
+  border-radius: 15px;
+}
+
+footer {
+ 
+  justify-content: space-evenly;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  color: #ff9369;
+  background-color: white;
+  padding: 0.5%;
+  z-index: 9;
+}
+
+.navigation {
+  margin: 2%;
+}
+
+.navigation-link {
+  margin: 8%;
+  border: 1px solid#ff6528;
+  padding: 10px;
+  color: #212529;
+  border-radius: 5px;
+}
+
+.navigation-link:hover{
+  background-color: #ff6528;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #ff6528;
+}
+
+.logout-button {
+  border: 1px solid#ff6528;
+  padding: 10px;
+  color: #212529;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.logout-button:hover {
+  background-color: #ff6528;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #ff6528;
 }
