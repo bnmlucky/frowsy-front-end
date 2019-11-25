@@ -36,8 +36,12 @@ class CreateNew extends Component {
   render() {
     return (
       <form onSubmit={this.createNewTask}>
+<<<<<<< HEAD
         Task:
         <div className="input-group mb-3">
+=======
+        <div id="inputForm" className="input-group mb-3">
+>>>>>>> 2fc4f0ff9c83aa18fce8c2f79629854ee16be70c
           <label htmlFor="task"></label>
           <input
             type="text"
@@ -45,7 +49,7 @@ class CreateNew extends Component {
             id="task"
             className="form-control"
             value={this.state.tasks}
-            placeholder="Tell us things..."
+            placeholder="Tell us the things you need to do..."
             onChange={this.handleChange}
           />
           <input

@@ -6,7 +6,6 @@ import Task from "./Task.js";
 import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -26,7 +25,7 @@ class MainContent extends Component {
     const userID = await localStorage.getItem("user");
     const taskID = task._id;
 
-        const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
+    const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
 
     this.props.getTasks();
   }
@@ -38,47 +37,61 @@ class MainContent extends Component {
     this.setState({ task: tasks, user: this.props.userid });
   }
 
-
-    render() {
-        return (
-            <main>
-                <div className="createNewDiv">
-                    <CreateNew
-                        user={this.state.user}
-                        getTasks={this.props.getTasks}
-                        handleAddTask={this.handleAddTask}
-                    />
+  render() {
+    return (
+      <main>
+        <div className="createNewDiv">
+          <CreateNew
+            user={this.state.user}
+            getTasks={this.props.getTasks}
+            handleAddTask={this.handleAddTask}
+          />
+        </div>
+        <br />
+        <div className="container">
+          <div id="ToDoDiv" className="col" className="flex-item">
+            <p>TO DO</p>
+            {this.props.tasks.map(task => {
+              return (
+                <div className="ToDo" key={task._id}>
+                  <ul className="flex-item-2">
+                    <li>
+                      {task.description} &nbsp;
+                      <div className="ListBtn">
+                        <button
+                          typeof="button"
+                          className="btn btn-outline-secondary"
+                          onClick={() => this.handleDeleteTask(task)}
+                        >
+                          &#128465;
+                        </button>{" "}
+                        <button
+                          typeof="button"
+                          className="btn btn-outline-secondary"
+                          onClick={this.handleEditTask}
+                        >
+                          ✎
+                        </button>{" "}
+                      </div>
+                      &nbsp;
+                      <EditTask task={task} getTasks={this.props.getTasks} />
+                    </li>
+                  </ul>
                 </div>
-                <br />
-                <div className="container">
-                    <div className="flex-item">
-                        To Do:
-          {this.props.tasks.map(task => {
-                            return (
-                                <div className="ToDo" key={task._id}>
-                                    <ul className="flex-item-2">
-                                        <li >
-                                            {task.description} &nbsp;
-                    <button onClick={() => this.handleDeleteTask(task)}>
-                                                &#128465;
-                    </button>{" "}
-                    &nbsp;
-                    <button onClick={this.handleEditTask}>✎</button> &nbsp;
-                    <EditTask task={task} getTasks={this.props.getTasks} />
-
-                  </li>
-                                    </ul>
-                                </div>
-                            );
-                        })}
-                    </div>
-                    <div className="Doing flex-item">Doing:</div>
-                    <div className="Done flex-item">Done:</div>
-                    <br />
-                </div>
-            </main >
-        );
-    }
+              );
+            })}
+          </div>
+          <div id="DoingDiv" className="col" className="Doing flex-item">
+            <p>DOING</p>
+          </div>
+          <div id="DoneDiv" className="col" className="Done flex-item">
+            <p>DONE</p>
+          </div>
+          <br />
+        </div>
+      </main>
+    );
+  }
 }
 
 export default MainContent;
