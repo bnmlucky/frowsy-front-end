@@ -13,6 +13,7 @@
 .container {
   display: flex;
   justify-content: space-around;
+  
 }
 /* this piece needs to become horizontally scrollable */
 
@@ -21,6 +22,11 @@
   border: 3px solid white;
   align-items: center;
   border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  height: 40rem;
+  overflow-y: auto;
+ 
 }
 /* these vertical columns need to become vertically scrollable */
 
@@ -60,6 +66,7 @@ li {
 #ToDoDiv,
 ul {
   background-color: #ff934f;
+  
 }
 
 ul,
