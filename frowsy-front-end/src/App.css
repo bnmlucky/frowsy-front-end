@@ -95,3 +95,10 @@ p {
 .editContainer {
   background-color: transparent;
 }
+
+.moveButtons {
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
