@@ -7,13 +7,13 @@
 
 .appJs-main-div,
 .mainContent-main-div {
-  border: 1px;
+  margin-bottom: 5%;
 }
 
 .container {
   display: flex;
   justify-content: space-around;
-  
+  margin-bottom: 1%;
 }
 /* this piece needs to become horizontally scrollable */
 
@@ -22,8 +22,9 @@
   border: 3px solid white;
   align-items: center;
   border-radius: 15px;
+  margin: 1%;
   padding: 10px;
-  margin: 10px;
+  
   height: 40rem;
   overflow-y: auto;
 }
@@ -106,6 +107,12 @@ p {
   background-color: transparent;
 }
 
+.moveButtons {
+  display: inline-block;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
 .ToDo, .Doing, .Done {
   border-radius: 15px;
 }
@@ -128,7 +135,7 @@ footer {
 }
 
 .navigation-link {
-  margin: 8%;
+  margin: 5%;
   border: 1px solid#ff6528;
   padding: 10px;
   color: #212529;
@@ -140,5 +147,27 @@ footer {
   color: white;
   text-decoration: none;
   font-weight: 600;
-  border: 2px solid #ff6528;
+  border: 1px solid #ff6528;
+}
+
+.logout-button {
+  border: 1px solid#ff6528;
+  padding: 10px;
+  color: #212529;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.logout-button:hover {
+  background-color: #ff6528;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #ff6528;
+}
+
+@media(max-width: 680px) {
+  .navigation-link{
+    margin: 2%;
+  }
 }
