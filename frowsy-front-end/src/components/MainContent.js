@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import CreateNew from "../components/CreateNew";
 import EditTask from "./EditTask.js";
+import { DragDropContext } from "react-beautiful-dnd";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
   constructor() {
