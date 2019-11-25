@@ -111,11 +111,11 @@ p {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
+ 
   justify-content: space-evenly;
+  position: fixed;
   text-align: center;
-  position: sticky;
+  width: 100%;
   bottom: 0;
   color: #ff9369;
   background-color: white;
