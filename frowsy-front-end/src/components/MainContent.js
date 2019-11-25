@@ -162,7 +162,7 @@ class MainContent extends Component {
             })}
           </div>
 
-          <div id="DoneDiv" className="col" className="Done flex-item">
+          <div id="DoneDiv" className="col Done flex-item">
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
               if (task.progress === "done") {
