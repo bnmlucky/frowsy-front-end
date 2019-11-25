@@ -12,15 +12,19 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
+/* this piece needs to become horizontally scrollable */
 
 .flex-item {
   flex: 1;
   border: 3px solid white;
   align-items: center;
   border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
 }
+/* these vertical columns need to become vertically scrollable */
 
 .createNewDiv {
   text-align: center;
