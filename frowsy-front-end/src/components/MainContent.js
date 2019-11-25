@@ -9,7 +9,8 @@ class MainContent extends Component {
     this.state = {
       user: "",
       loggedIn: true,
-      tasks: []
+      tasks: [],
+      toggleEditBtn: false
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -17,8 +18,20 @@ class MainContent extends Component {
     this.handleChangeDoing = this.handleChangeDoing.bind(this);
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
+    this.handleEditTask = this.handleEditTask.bind(this);
     // this.handlelogOut = this.handlelogOut.bind(this);
   }
+  handleEditTask() {
+    // console.log("You click edit");
+    // this.setState({
+    //   toggleEditBtn: true
+    // });
+    this.setState(prevState => ({
+      toggleEditBtn: !prevState.toggleEditBtn
+      //above if its true set it set it to false
+    }));
+  }
+
   handleAddTask(task) {
     console.log(task);
     this.setState({ tasks: [...this.state.tasks, task] });
@@ -100,19 +113,48 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
-                          </button>{" "}
+                          </button>
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={() => this.getTasks(task)}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
+                          {/* Edit Button */}
+                          {/* Buttons */}
+                          <div className="moveButtons">
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeToDo(task)}
+                            >
+                              To-Do
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDoing(task)}
+                            >
+                              Doing
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDone(task)}
+                            >
+                              Done
+                            </button>
+                          </div>
+                          {/* Buttons */}
                         </div>
-                        &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
-                        <button onClick={() => this.handleChangeDoing(task)}>
-                          ->
-                        </button>
                       </li>
                     </ul>
                   </div>
@@ -137,22 +179,48 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/*  Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
-                          </button>{" "}
+                          </button>
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={() => this.getTasks(task)}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
+                          {/* Edit Button */}
+                          {/* Buttons */}
+                          <div className="moveButtons">
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeToDo(task)}
+                            >
+                              To-Do
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDoing(task)}
+                            >
+                              Doing
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDone(task)}
+                            >
+                              Done
+                            </button>
+                          </div>
+                          {/* Buttons */}
                         </div>
-                        &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
-                        <button onClick={() => this.handleChangeToDo(task)}>
-                          To-Do
-                        </button>
-                        <button onClick={() => this.handleChangeDone(task)}>
-                          Done
-                        </button>
                       </li>
                     </ul>
                   </div>
@@ -178,19 +246,48 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/*  Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
-                          </button>{" "}
+                          </button>
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={() => this.getTasks(task)}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
+                          {/* Edit Button */}
+                          {/* Buttons */}
+                          <div className="moveButtons">
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeToDo(task)}
+                            >
+                              To-Do
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDoing(task)}
+                            >
+                              Doing
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDone(task)}
+                            >
+                              Done
+                            </button>
+                          </div>
+                          {/* Buttons */}
                         </div>
-                        &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
-                        <button onClick={() => this.handleChangeDoing(task)}>
-                          Doing
-                        </button>
                       </li>
                     </ul>
                   </div>
