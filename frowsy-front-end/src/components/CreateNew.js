@@ -36,22 +36,21 @@ class CreateNew extends Component {
   render() {
     return (
       <form onSubmit={this.createNewTask}>
-        Task:
-        <div class="input-group mb-3">
+        <div id="inputForm" className="input-group mb-3">
           <label htmlFor="task"></label>
           <input
             type="text"
             name="task"
             id="task"
-            class="form-control"
+            className="form-control"
             value={this.state.tasks}
-            placeholder="Tell us things..."
+            placeholder="Tell us the things you need to do..."
             onChange={this.handleChange}
           />
           <input
             type="submit"
             value="Add"
-            class="btn btn-outline-secondary"
+            className="btn btn-outline-secondary"
             id="button-addon2"
           />
         </div>

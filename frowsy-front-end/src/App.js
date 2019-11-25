@@ -72,9 +72,8 @@ class App extends Component {
   render() {
     return (
       <div className="appJs-main-div">
+        <h1>F R O W S Y</h1>
         <div className="topDivHeaderRegisterLogin">
-          <h2>Frowsy</h2>
-
           {this.state.loggedIn && (
             <button onClick={this.handleLogOut}>Log Out</button>
           )}
