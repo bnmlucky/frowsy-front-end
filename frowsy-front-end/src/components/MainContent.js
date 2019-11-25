@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import CreateNew from "../components/CreateNew";
-import Update from "../components/Update";
-import Task from "./Task.js";
 import EditTask from "./EditTask.js";
 const baseURL = "http://localhost:3003";
 class MainContent extends Component {
@@ -29,7 +27,7 @@ class MainContent extends Component {
     const taskID = task._id;
 
     const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
-
+    console.log(response);
     this.props.getTasks();
   }
 
@@ -41,6 +39,7 @@ class MainContent extends Component {
       description: task.description,
       assigned: "doing"
     });
+    console.log(response);
     this.props.getTasks();
   }
   async handleChangeToDo(task) {
@@ -50,6 +49,7 @@ class MainContent extends Component {
       description: task.description,
       assigned: "todo"
     });
+    console.log(response);
     this.props.getTasks();
   }
   async handleChangeDone(task) {
@@ -81,7 +81,7 @@ class MainContent extends Component {
           <div id="ToDoDiv" className="col" className="flex-item">
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "todo") {
+              if (task.progress === "todo") {
                 return (
                   <div className="ToDo" key={task._id}>
                     <ul className="flex-item-2">
@@ -118,7 +118,7 @@ class MainContent extends Component {
           <div id="DoingDiv" className="col" className="Doing flex-item">
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "doing") {
+              if (task.progress === "doing") {
                 return (
                   <div className="Doing" key={task._id}>
                     <ul className="flex-item-2">
@@ -159,7 +159,7 @@ class MainContent extends Component {
           <div id="DoneDiv" className="col" className="Done flex-item">
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
-              if (task.progress == "done") {
+              if (task.progress === "done") {
                 return (
                   <div className="Done" key={task._id}>
                     <ul className="flex-item-2">

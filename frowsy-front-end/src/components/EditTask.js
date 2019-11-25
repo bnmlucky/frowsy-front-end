@@ -26,6 +26,7 @@ class EditTask extends Component {
       description: description,
       assigned: "todo"
     });
+    console.log(response);
     this.setState({
       description: ""
     });
@@ -34,8 +35,8 @@ class EditTask extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="editContainer">
+        <form className="editContainer" onSubmit={this.handleSubmit}>
           <label htmlFor="description"></label>
           <input
             type="text"
