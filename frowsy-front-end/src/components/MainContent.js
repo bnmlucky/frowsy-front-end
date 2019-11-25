@@ -14,7 +14,6 @@ class MainContent extends Component {
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
-
     this.handleChangeDoing = this.handleChangeDoing.bind(this);
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
