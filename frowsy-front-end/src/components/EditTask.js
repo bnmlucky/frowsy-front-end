@@ -26,6 +26,7 @@ class EditTask extends Component {
       description: description,
       assigned: "todo"
     });
+    console.log(response);
     this.setState({
       description: ""
     });

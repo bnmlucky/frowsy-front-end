@@ -25,12 +25,11 @@ class CreateNew extends Component {
       description: this.state.tasks,
       progress: "todo"
     });
-    //do we need to have a get request as well to get all the tasks, not just post?
-    const localStorageSave = await JSON.parse(localStorage.getItem("tasks")); //are we using this variable anywhere?
+
     this.props.getTasks();
-    // console.log(response);
+
     this.setState({ tasks: [] });
-    this.props.handleAddTask(response.data); //why is the array empty? Do we need a spread operator?  We tried it but it broke.
+    this.props.handleAddTask(response.data);
   }
 
   render() {
