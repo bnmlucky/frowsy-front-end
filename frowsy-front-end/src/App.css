@@ -111,14 +111,34 @@ p {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
+ 
   justify-content: space-evenly;
+  position: fixed;
   text-align: center;
-  position: sticky;
+  width: 100%;
   bottom: 0;
   color: #ff9369;
   background-color: white;
   padding: 0.5%;
   z-index: 9;
+}
+
+.navigation {
+  margin: 2%;
+}
+
+.navigation-link {
+  margin: 8%;
+  border: 1px solid#ff6528;
+  padding: 10px;
+  color: #212529;
+  border-radius: 5px;
+}
+
+.navigation-link:hover{
+  background-color: #ff6528;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid #ff6528;
 }

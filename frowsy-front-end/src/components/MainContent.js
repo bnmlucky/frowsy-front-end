@@ -84,7 +84,7 @@ class MainContent extends Component {
         </div>
         <br />
         <div className="container">
-          <div id="ToDoDiv" className="col" className="flex-item">
+          <div id="ToDoDiv" className="col flex-item">
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
               if (task.progress === "todo") {
