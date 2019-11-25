@@ -22,13 +22,8 @@ class MainContent extends Component {
     // this.handlelogOut = this.handlelogOut.bind(this);
   }
   handleEditTask() {
-    // console.log("You click edit");
-    // this.setState({
-    //   toggleEditBtn: true
-    // });
     this.setState(prevState => ({
       toggleEditBtn: !prevState.toggleEditBtn
-      //above if its true set it set it to false
     }));
   }
 
@@ -117,14 +112,14 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={this.handleEditTask}
                           >
                             ✎
                           </button>
                           {this.state.toggleEditBtn ? (
                             <EditTask
                               task={task}
-                              getTasks={() => this.getTasks(task)}
+                              getTasks={this.props.getTasks}
                             />
                           ) : (
                             <p></p>
@@ -179,18 +174,18 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
-                          {/*  Edit Button */}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={this.handleEditTask}
                           >
                             ✎
                           </button>
                           {this.state.toggleEditBtn ? (
                             <EditTask
                               task={task}
-                              getTasks={() => this.getTasks(task)}
+                              getTasks={this.props.getTasks}
                             />
                           ) : (
                             <p></p>
@@ -246,18 +241,18 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
-                          {/*  Edit Button */}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={this.handleEditTask}
                           >
                             ✎
                           </button>
                           {this.state.toggleEditBtn ? (
                             <EditTask
                               task={task}
-                              getTasks={() => this.getTasks(task)}
+                              getTasks={this.props.getTasks}
                             />
                           ) : (
                             <p></p>
