@@ -21,6 +21,7 @@ class MainContent extends Component {
     // this.handlelogOut = this.handlelogOut.bind(this);
   }
   handleEditTask() {
+    // To show/ hide edit field
     this.setState(prevState => ({
       toggleEditBtn: !prevState.toggleEditBtn
     }));
