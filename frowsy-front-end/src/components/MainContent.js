@@ -17,6 +17,7 @@ class MainContent extends Component {
     this.handleChangeDoing = this.handleChangeDoing.bind(this);
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
+    // this.handlelogOut = this.handlelogOut.bind(this);
   }
   handleAddTask(task) {
     console.log(task);
@@ -30,7 +31,10 @@ class MainContent extends Component {
     console.log(response);
     this.props.getTasks();
   }
-
+  //   handlelogOut() {
+  //     // console.log(this.props);
+  //     this.props.handleLogOut();
+  //   }
   async handleChangeDoing(task) {
     // event.preventDefault();
     const taskId = task._id;
@@ -69,6 +73,7 @@ class MainContent extends Component {
   render() {
     return (
       <main>
+        {/* <button onClick={this.logOut}>LogOut</button> */}
         <div className="createNewDiv">
           <CreateNew
             user={this.state.user}
