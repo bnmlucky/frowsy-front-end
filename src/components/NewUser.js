@@ -37,7 +37,7 @@ class NewUser extends Component {
           <label htmlFor="username"></label>
           <input
             type="text"
-            id="username"
+            id="exampleInputEmail1"
             className="form-control"
             name="username"
             onChange={this.handleUserNameChange}
@@ -46,7 +46,7 @@ class NewUser extends Component {
           />
           <input
             type="text"
-            id="password"
+            id="exampleInputPassword1"
             name="password"
             className="form-control"
             onChange={this.handlePasswordChange}

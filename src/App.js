@@ -131,7 +131,6 @@ class App extends Component {
                   )}
                 />
               )}
-
               {this.state.loggedIn && (
                 <Route
                   path="/Tasks"

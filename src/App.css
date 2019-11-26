@@ -214,7 +214,6 @@ footer {
   font-weight: 600;
   border: 1px solid #ff6528;
 }
-
 @media (max-width: 750px) {
   .navigation-link,
   .nav-item {

@@ -111,7 +111,6 @@ class MainContent extends Component {
   render() {
     return (
       <main>
-        {/* <button onClick={this.logOut}>LogOut</button> */}
         <div className="createNewDiv">
           <CreateNew
             user={this.state.user}
