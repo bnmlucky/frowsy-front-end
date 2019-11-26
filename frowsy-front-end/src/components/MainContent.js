@@ -11,7 +11,6 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
-      toggleEditBtn: false,
       editId: "",
       dragid: "",
       dragdescription: ""
@@ -27,9 +26,7 @@ class MainContent extends Component {
   }
   handleEditTask(id) {
     // To show/ hide edit field
-    // this.setState(prevState => ({
-    //   toggleEditBtn: !prevState.toggleEditBtn
-    // }));
+
     this.setState({
       editId: id
     });

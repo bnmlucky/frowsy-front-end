@@ -6,6 +6,7 @@ import NewUser from "./components/NewUser";
 import Home from "./components/Home.js";
 import Login from "./components/Login";
 import axios from "axios";
+import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 const baseURL = "http://localhost:3003";
 
@@ -63,6 +64,7 @@ class App extends Component {
       loggedIn: true,
       userid: user.foundUser._id
     });
+    // <Redirect to="/Tasks" />;
     console.log(this.state.loggedIn);
   }
   //RENDER/RETURN
@@ -79,9 +81,12 @@ class App extends Component {
               <Link className="navigation-link" to="/NewUser">
                 Create Account
               </Link>
-              <Link className="navigation-link" to="/LogIn">
-                Log In
-              </Link>
+              {!this.state.loggedIn && (
+                <Link className="navigation-link" to="/LogIn">
+                  Log In
+                </Link>
+              )}
+
               {localStorage.length > 0 && (
                 <Link className="navigation-link" to="/Tasks">
                   My Tasks
@@ -100,12 +105,15 @@ class App extends Component {
                 <NewUser {...props} handleAddUser={this.handleAddUser} />
               )}
             />
-            <Route
-              path="/LogIn"
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} />
-              )}
-            />
+            {!this.state.loggedIn && (
+              <Route
+                path="/LogIn"
+                render={props => (
+                  <Login {...props} handleLogin={this.handleLogin} />
+                )}
+              />
+            )}
+
             {this.state.loggedIn && (
               <Route
                 path="/Tasks"
