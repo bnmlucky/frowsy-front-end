@@ -87,6 +87,11 @@ class App extends Component {
                   My Tasks
                 </Link>
               )}
+              {this.state.loggedIn && (
+                <button className="logout-button" onClick={this.handleLogOut}>
+                  Log Out
+                </button>
+              )}
             </nav>
             <Route path="/Home" exact component={Home} />
             <Route
@@ -115,11 +120,11 @@ class App extends Component {
                 )}
               />
             )}
-            {this.state.loggedIn && (
+            {/* {this.state.loggedIn && (
               <button className="logout-button" onClick={this.handleLogOut}>
                 Log Out
               </button>
-            )}
+            )} */}
           </div>
           <footer>
             Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
