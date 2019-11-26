@@ -117,7 +117,7 @@ class App extends Component {
               )}
             />
 
-            {this.state.loggedIn ? (
+           {this.state.loggedIn ? (
               <Redirect from="/LogIn" to="/Tasks" />
             ) : (
               <Route
@@ -128,6 +128,21 @@ class App extends Component {
               />
             )}
 
+            {this.state.loggedIn && (
+              <Route
+                path="/Tasks"
+                render={props => (
+                  <MainContent
+                    {...props}
+                    userid={this.state.userid}
+                    tasks={this.state.tasks}
+                    getTasks={this.getTasks}
+                    logOut={this.handleLogOut}
+                  />
+                )}
+              />
+            )}
+</div>
           </div>
           <footer>
             Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
