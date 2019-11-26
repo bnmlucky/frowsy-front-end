@@ -11,8 +11,9 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
-
-      toggleEditBtn: false
+      toggleEditBtn: false,
+      dragid: "",
+      dragdescription: ""
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -20,6 +21,7 @@ class MainContent extends Component {
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
     this.handleEditTask = this.handleEditTask.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
     // this.handlelogOut = this.handlelogOut.bind(this);
   }
   handleEditTask() {
@@ -33,10 +35,10 @@ class MainContent extends Component {
     console.log(task);
     this.setState({ tasks: [...this.state.tasks, task] });
   }
-  onDrag = event => {
-    event.preventDefault();
-    console.log("dragging");
-  };
+  //   onDrag = event => {
+  //     event.preventDefault();
+  //     console.log("dragging");
+  //   };
   async handleDeleteTask(task) {
     const userID = await localStorage.getItem("user");
     const taskID = task._id;
@@ -81,19 +83,31 @@ class MainContent extends Component {
   //   }
   onDragStart(ev, task) {
     // ev.preventDefault();
-    console.log("drag start");
+    console.log("drag start:" + ev.target.id);
+    console.log(task);
+    this.setState({
+      dragid: task._id,
+      dragdescription: task.description
+    });
     // console.log(ev.currentTarget());
   }
   onDragOver(ev) {
     ev.preventDefault();
   }
-  onDrop(ev, cat) {
-    let task = this.state.dragging;
-    // console.log(task._id);
-    // console.log(cat);
-    console.log(ev);
-    console.log(cat);
-    console.log("this is task from state" + task);
+  async onDrop(ev, cat) {
+    const taskId = this.state.dragid;
+    const userId = localStorage.getItem("user");
+
+    const response = await axios.put(`${baseURL}/tasks/${userId}/${taskId}`, {
+      description: this.state.dragdescription,
+      assigned: cat
+    });
+
+    this.setState({
+      dragid: "",
+      dragdescription: ""
+    });
+    this.props.getTasks();
   }
   async handleChangeDone(task) {
     const taskId = task._id;
@@ -127,9 +141,9 @@ class MainContent extends Component {
             className="col flex-item"
             onDragOver={e => this.onDragOver(e)}
             onDrop={e => {
-              this.onDrop(e, "complete");
+              this.onDrop(e, "todo");
             }}
-          // onDrop={event => this.handleDrop(event)}
+            // onDrop={event => this.handleDrop(event)}
           >
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
@@ -140,7 +154,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={(event, task) => this.handleDrag(event, task)}
+                    // onDrag={(event, task) => this.handleDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -167,8 +181,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -208,9 +222,9 @@ class MainContent extends Component {
             className="Doing flex-item"
             onDragOver={e => this.onDragOver(e)}
             onDrop={e => {
-              this.onDrop(e, "complete");
+              this.onDrop(e, "doing");
             }}
-          // onDrop={(event, task) => this.handleDrop(event, task)}
+            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
@@ -221,7 +235,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={event => this.onDrag(event, task)}
+                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -248,8 +262,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -289,9 +303,9 @@ class MainContent extends Component {
             className="col Done flex-item"
             onDragOver={event => event.preventDefault()}
             onDrop={e => {
-              this.onDrop(e, "complete");
+              this.onDrop(e, "done");
             }}
-          // onDrop={(event, task) => this.handleDrop(event, task)}
+            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
@@ -302,7 +316,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={event => this.onDrag(event, task)}
+                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -329,8 +343,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
