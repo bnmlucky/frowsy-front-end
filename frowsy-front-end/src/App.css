@@ -190,6 +190,8 @@ footer {
   border: 1px solid #ff6528;
 }
 
+@media (max-width: 680px) {
+  .navigation-link {
 .createAccount {
   border: 1px solid#ff6528;
   padding: 10px;
@@ -212,6 +214,7 @@ footer {
     margin: 2%;
   }
 }
+    
 .home {
   font-size: 20px;
   /* color: #c6e833; */
