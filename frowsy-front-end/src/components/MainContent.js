@@ -160,10 +160,10 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
-                          </button>
+                          </button>{" "}
                           {this.state.toggleEditBtn ? (
                             <EditTask
                               task={task}
@@ -241,7 +241,7 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
                           </button>
@@ -322,7 +322,7 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
                           </button>
