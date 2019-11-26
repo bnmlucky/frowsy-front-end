@@ -76,64 +76,82 @@ class App extends Component {
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
             <div className="FullNav">
-              <a className="navigation-link-head" className="h1" href="/Home">
+              <a className="navigation-link-head h1" href="/Home">
                 <h1>F R O W S Y</h1>
               </a>
-            <nav className="navigation">
-              <Link className="navigation-link nav-item" to="/Home">
-                Home
+              <nav className="navigation">
+                <Link className="navigation-link nav-item" to="/Home">
+                  Home
               </Link>
-              <Link className="navigation-link nav-item" to="/NewUser">
-                Create Account
+                <Link className="navigation-link nav-item" to="/NewUser">
+                  Create Account
               </Link>
-              {!this.state.loggedIn && (
-                <Link className="navigation-link nav-item" to="/LogIn">
-                  Log In
+                {!this.state.loggedIn && (
+                  <Link className="navigation-link nav-item" to="/LogIn">
+                    Log In
                 </Link>
-              )}
+                )}
 
-              {localStorage.length > 0 ? (
-                <Link className="navigation-link nav-item" to="/Tasks">
-                  My Tasks
+                {localStorage.length > 0 ? (
+                  <Link className="navigation-link nav-item" to="/Tasks">
+                    My Tasks
                 </Link>
-              ) : (
-                <Redirect from="/Tasks" to="Home" />
-              )}
+                ) : (
+                    <Redirect from="/Tasks" to="Home" />
+                  )}
 
-              {this.state.loggedIn && (
-                <button
-                  className="logout-button nav-item"
-                  onClick={this.handleLogOut}
-                >
-                  Log Out
+                {this.state.loggedIn && (
+                  <button
+                    className="logout-button nav-item"
+                    onClick={this.handleLogOut}
+                  >
+                    Log Out
                 </button>
-              )}
-            </nav>
-            <Route path="/Home" exact component={Home} />
-            <Route
-              path="/NewUser"
-              render={props => (
-                <NewUser {...props} handleAddUser={this.handleAddUser} />
-              )}
-            />
-
-            {this.state.loggedIn ? (
-              <Redirect from="/LogIn" to="/Tasks" />
-            ) : (
+                )}
+              </nav>
+              <Route path="/Home" exact component={Home} />
               <Route
-                path="/LogIn"
+                path="/NewUser"
                 render={props => (
-                  <Login {...props} handleLogin={this.handleLogin} />
+                  <NewUser {...props} handleAddUser={this.handleAddUser} />
                 )}
               />
-            )}
 
-          </div>
-          <footer>
-            Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
+              {this.state.loggedIn ? (
+                <Redirect from="/LogIn" to="/Tasks" />
+              ) : (
+                  <Route
+                    path="/LogIn"
+                    render={props => (
+                      <Login {...props} handleLogin={this.handleLogin} />
+                    )}
+                  />
+                )}
+
+              {this.state.loggedIn && (
+                <Route
+                  path="/Tasks"
+                  render={props => (
+                    <MainContent
+                      {...props}
+                      userid={this.state.userid}
+                      tasks={this.state.tasks}
+                      getTasks={this.getTasks}
+                      logOut={this.handleLogOut}
+                    />
+                  )}
+                />
+              )}
+
+            </div>
+            <footer>
+              Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
           </footer>
+          </div>
         </div>
       </Router>
+
+
     );
   }
 }

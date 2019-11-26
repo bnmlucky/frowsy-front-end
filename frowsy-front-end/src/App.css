@@ -93,6 +93,9 @@ p {
 }
 .ListBtn {
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .LogInForm {
@@ -191,7 +194,7 @@ footer {
 }
 
 @media (max-width: 680px) {
-  .navigation-link {
+  .navigation-link,
 .createAccount {
   border: 1px solid#ff6528;
   padding: 10px;
@@ -199,6 +202,7 @@ footer {
   border-radius: 5px;
   background-color: white;
   margin-top: 4%;
+}
 }
 .createAccount:hover {
   background-color: #ff6528;
