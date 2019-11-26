@@ -5,6 +5,7 @@
 Picture of Home Page:
 Picture of Login:
 Picture of Tasks:
+![Image of Yaktocat](./images/frowsytaskpage.png)
 
 ### What is FROWSY?:
 
