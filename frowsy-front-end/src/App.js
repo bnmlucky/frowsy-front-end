@@ -79,6 +79,7 @@ class App extends Component {
               <a className="navigation-link-head" className="h1" href="/Home">
                 <h1>F R O W S Y</h1>
               </a>
+
               <nav className="navigation">
                 <Link className="navigation-link nav-item" to="/Home">
                   Home
@@ -110,17 +111,23 @@ class App extends Component {
                 )}
               </nav>
               <Route path="/Home" exact component={Home} />
+              <Route
+                path="/NewUser"
+                render={props => (
+                  <NewUser {...props} handleAddUser={this.handleAddUser} />
+                )}
+              />
+
               {this.state.loggedIn ? (
                 <Redirect from="/LogIn" to="/Tasks" />
               ) : (
                 <Route
-                  path="/NewUser"
+                  path="/LogIn"
                   render={props => (
-                    <NewUser {...props} handleAddUser={this.handleAddUser} />
+                    <Login {...props} handleLogin={this.handleLogin} />
                   )}
                 />
               )}
-
               {this.state.loggedIn && (
                 <Route
                   path="/Tasks"
