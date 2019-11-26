@@ -147,6 +147,9 @@ class App extends Component {
               )}
             </div>
           </div>
+          <footer>
+            Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
+          </footer>
         </div>
       </Router>
     );
