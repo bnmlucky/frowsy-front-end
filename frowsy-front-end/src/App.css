@@ -93,6 +93,9 @@ p {
 }
 .ListBtn {
   text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .LogInForm {
@@ -191,16 +194,16 @@ footer {
 }
 
 @media (max-width: 680px) {
-  .navigation-link, 
-.createAccount {
-  border: 1px solid#ff6528;
-  padding: 10px;
-  color: #212529;
-  border-radius: 5px;
-  background-color: white;
-  margin-top: 4%;
-}
+  .navigation-link,
+  .createAccount {
+    border: 1px solid#ff6528;
+    padding: 10px;
+    color: #212529;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 4%;
   }
+}
 .createAccount:hover {
   background-color: #ff6528;
   color: white;
@@ -215,7 +218,7 @@ footer {
     margin: 2%;
   }
 }
-    
+
 .home {
   font-size: 20px;
   /* color: #c6e833; */

@@ -76,9 +76,10 @@ class App extends Component {
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
             <div className="FullNav">
-              <Link className="navigation-link nav-item" to="/Home">
+              <a className="navigation-link-head" className="h1" href="/Home">
                 <h1>F R O W S Y</h1>
-              </Link>
+              </a>
+
               <nav className="navigation">
                 <Link className="navigation-link nav-item" to="/Home">
                   Home
@@ -116,6 +117,7 @@ class App extends Component {
                   <NewUser {...props} handleAddUser={this.handleAddUser} />
                 )}
               />
+
               {this.state.loggedIn ? (
                 <Redirect from="/LogIn" to="/Tasks" />
               ) : (
@@ -126,6 +128,7 @@ class App extends Component {
                   )}
                 />
               )}
+
               {this.state.loggedIn && (
                 <Route
                   path="/Tasks"
