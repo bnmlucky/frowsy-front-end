@@ -44,7 +44,7 @@ class Login extends Component {
             name="username"
             onChange={this.handleUserNameChange}
             value={this.state.username}
-            placeholder="Username"
+            placeholder="username"
           />
           <input
             type="text"
@@ -53,7 +53,7 @@ class Login extends Component {
             name="password"
             onChange={this.handlePasswordChange}
             value={this.state.password}
-            placeholder="Password"
+            placeholder="password"
           />
           <input type="submit" className="login-button" value="Log In" />
         </form>
