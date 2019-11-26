@@ -20,7 +20,6 @@ class EditTask extends Component {
     const userId = localStorage.getItem("user");
     const taskId = this.props.task._id;
     const progress = this.props.task.progress;
-    // console.log(progress);
     const description = this.state.description
       ? this.state.description
       : this.props.task.description;

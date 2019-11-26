@@ -21,6 +21,7 @@ class Login extends Component {
     this.setState({ password: event.currentTarget.value });
   }
   async handleSubmit(event) {
+    console.log('hitting submit route')
     event.preventDefault();
 
     const response = await axios.post(`${baseURL}/sessions`, {
@@ -54,7 +55,7 @@ class Login extends Component {
             value={this.state.password}
             placeholder="Password"
           />
-          <input type="submit" className="login-button btn btn-primary" value="Log In" />
+          <input type="submit" className="login-button" value="Log In" />
         </form>
       </div>
     );
