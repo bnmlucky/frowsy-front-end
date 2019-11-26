@@ -11,13 +11,9 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
-<<<<<<< HEAD
-      toggleEditBtn: false
-=======
       toggleEditBtn: false,
       dragid: "",
       dragdescription: ""
->>>>>>> b9d6d118a6c71696ad9c9c055dee2113754d7fad
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
