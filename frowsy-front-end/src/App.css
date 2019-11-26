@@ -197,3 +197,19 @@ footer {
   font-size: 40px;
   color: #23c4c6;
 }
+
+img {
+  height: 50%;
+  width: 60%;
+  border-radius: 15px;
+  margin-right: 1%;
+}
+
+.home-h1 {
+  margin: 1%;
+}
+
+.home-text {
+  font-size: 1.5em;
+  font-weight: lighter;
+}
