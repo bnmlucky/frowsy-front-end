@@ -12,6 +12,7 @@ class MainContent extends Component {
       loggedIn: true,
       tasks: [],
       toggleEditBtn: false,
+      editId: "",
       dragid: "",
       dragdescription: ""
     };
@@ -22,44 +23,39 @@ class MainContent extends Component {
     this.handleChangeDone = this.handleChangeDone.bind(this);
     this.handleEditTask = this.handleEditTask.bind(this);
     this.onDragStart = this.onDragStart.bind(this);
-    // this.handlelogOut = this.handlelogOut.bind(this);
+    this.editDone = this.editDone.bind(this);
   }
-  handleEditTask() {
+  handleEditTask(id) {
     // To show/ hide edit field
-    this.setState(prevState => ({
-      toggleEditBtn: !prevState.toggleEditBtn
-    }));
+    // this.setState(prevState => ({
+    //   toggleEditBtn: !prevState.toggleEditBtn
+    // }));
+    this.setState({
+      editId: id
+    });
   }
 
   handleAddTask(task) {
-    console.log(task);
     this.setState({ tasks: [...this.state.tasks, task] });
   }
-  //   onDrag = event => {
-  //     event.preventDefault();
-  //     console.log("dragging");
-  //   };
+
   async handleDeleteTask(task) {
     const userID = await localStorage.getItem("user");
     const taskID = task._id;
 
     const response = await axios.delete(`${baseURL}/tasks/${userID}/${taskID}`);
-    console.log(response);
+
     this.props.getTasks();
   }
-  //   handlelogOut() {
-  //     // console.log(this.props);
-  //     this.props.handleLogOut();
-  //   }
+
   async handleChangeDoing(task) {
-    // event.preventDefault();
     const taskId = task._id;
     const userId = localStorage.getItem("user");
     const response = await axios.put(`${baseURL}/tasks/${userId}/${taskId}`, {
       description: task.description,
       assigned: "doing"
     });
-    console.log(response);
+
     this.props.getTasks();
   }
   async handleChangeToDo(task) {
@@ -69,27 +65,15 @@ class MainContent extends Component {
       description: task.description,
       assigned: "todo"
     });
-    console.log(response);
+
     this.props.getTasks();
   }
-  //   handleDrag(event) {
-  //     event.preventDefault();
-  //     console.log("dragging");
-  //   }
-  //   handleDrop(event, task) {
-  //     console.log(event.currentTarget());
-  //     console.log(task);
 
-  //   }
   onDragStart(ev, task) {
-    // ev.preventDefault();
-    console.log("drag start:" + ev.target.id);
-    console.log(task);
     this.setState({
       dragid: task._id,
       dragdescription: task.description
     });
-    // console.log(ev.currentTarget());
   }
   onDragOver(ev) {
     ev.preventDefault();
@@ -122,7 +106,11 @@ class MainContent extends Component {
     const tasks = this.props.tasks;
     this.setState({ task: tasks, user: this.props.userid });
   }
-
+  editDone() {
+    this.setState({
+      editId: ""
+    });
+  }
   render() {
     return (
       <main>
@@ -143,7 +131,6 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "todo");
             }}
-            // onDrop={event => this.handleDrop(event)}
           >
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
@@ -154,7 +141,6 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={(event, task) => this.handleDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -171,14 +157,15 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={() => this.handleEditTask(task._id)}
                           >
                             ✎
                           </button>{" "}
-                          {this.state.toggleEditBtn ? (
+                          {this.state.editId === task._id ? (
                             <EditTask
                               task={task}
                               getTasks={this.props.getTasks}
+                              editDone={this.editDone}
                             />
                           ) : (
                             <p></p>
@@ -224,7 +211,6 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "doing");
             }}
-            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
@@ -235,7 +221,6 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -252,14 +237,15 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={() => this.handleEditTask(task._id)}
                           >
                             ✎
                           </button>
-                          {this.state.toggleEditBtn ? (
+                          {this.state.editId === task._id ? (
                             <EditTask
                               task={task}
                               getTasks={this.props.getTasks}
+                              editDone={this.editDone}
                             />
                           ) : (
                             <p></p>
@@ -305,7 +291,6 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "done");
             }}
-            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
@@ -316,7 +301,6 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -333,14 +317,15 @@ class MainContent extends Component {
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={() => this.handleEditTask(task)}
+                            onClick={() => this.handleEditTask(task._id)}
                           >
                             ✎
                           </button>
-                          {this.state.toggleEditBtn ? (
+                          {this.state.editId === task._id ? (
                             <EditTask
                               task={task}
                               getTasks={this.props.getTasks}
+                              editDone={this.editDone}
                             />
                           ) : (
                             <p></p>

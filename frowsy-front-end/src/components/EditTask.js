@@ -31,6 +31,7 @@ class EditTask extends Component {
     this.setState({
       description: ""
     });
+    this.props.editDone();
     this.props.getTasks();
   }
 
