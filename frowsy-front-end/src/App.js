@@ -87,14 +87,19 @@ class App extends Component {
                 </Link>
               )}
 
-              {localStorage.length > 0 && (
+              {localStorage.length > 0 ? (
                 <Link className="navigation-link nav-item" to="/Tasks">
                   My Tasks
                 </Link>
+              ) : (
+                <Redirect from="/Tasks" to="Home" />
               )}
 
               {this.state.loggedIn && (
-                <button className="logout-button nav-item" onClick={this.handleLogOut}>
+                <button
+                  className="logout-button nav-item"
+                  onClick={this.handleLogOut}
+                >
                   Log Out
                 </button>
               )}
@@ -110,13 +115,13 @@ class App extends Component {
             {this.state.loggedIn ? (
               <Redirect from="/LogIn" to="/Tasks" />
             ) : (
-                <Route
-                  path="/LogIn"
-                  render={props => (
-                    <Login {...props} handleLogin={this.handleLogin} />
-                  )}
-                />
-              )}
+              <Route
+                path="/LogIn"
+                render={props => (
+                  <Login {...props} handleLogin={this.handleLogin} />
+                )}
+              />
+            )}
 
             {this.state.loggedIn && (
               <Route
