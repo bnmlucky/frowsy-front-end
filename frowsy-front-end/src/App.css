@@ -24,7 +24,7 @@
   border-radius: 15px;
   margin: 1%;
   padding: 10px;
-  
+
   height: 40rem;
   overflow-y: auto;
 }
@@ -113,12 +113,13 @@ p {
   display: flex;
   justify-content: center;
 }
-.ToDo, .Doing, .Done {
+.ToDo,
+.Doing,
+.Done {
   border-radius: 15px;
 }
 
 footer {
- 
   justify-content: space-evenly;
   position: fixed;
   text-align: center;
@@ -142,7 +143,7 @@ footer {
   border-radius: 5px;
 }
 
-.navigation-link:hover{
+.navigation-link:hover {
   background-color: #ff6528;
   color: white;
   text-decoration: none;
@@ -175,7 +176,7 @@ footer {
   margin-top: 4%;
 }
 
-.login-button:hover{
+.login-button:hover {
   background-color: #ff6528;
   color: white;
   text-decoration: none;
@@ -183,8 +184,14 @@ footer {
   border: 1px solid #ff6528;
 }
 
-@media(max-width: 680px) {
-  .navigation-link{
+.ListBtn {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 680px) {
+  .navigation-link {
     margin: 2%;
   }
 }

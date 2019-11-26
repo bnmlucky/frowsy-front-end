@@ -171,30 +171,6 @@ class MainContent extends Component {
                             <p></p>
                           )}
                           {/* Edit Button */}
-                          {/* Buttons */}
-                          <div className="moveButtons">
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeToDo(task)}
-                            >
-                              To-Do
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDoing(task)}
-                            >
-                              Doing
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDone(task)}
-                            >
-                              Done
-                            </button>
-                          </div>
-                          {/* Buttons */}
                         </div>
                       </li>
                     </ul>
@@ -251,30 +227,6 @@ class MainContent extends Component {
                             <p></p>
                           )}
                           {/* Edit Button */}
-                          {/* Buttons */}
-                          <div className="moveButtons">
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeToDo(task)}
-                            >
-                              To-Do
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDoing(task)}
-                            >
-                              Doing
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDone(task)}
-                            >
-                              Done
-                            </button>
-                          </div>
-                          {/* Buttons */}
                         </div>
                       </li>
                     </ul>
@@ -331,30 +283,6 @@ class MainContent extends Component {
                             <p></p>
                           )}
                           {/* Edit Button */}
-                          {/* Buttons */}
-                          <div className="moveButtons">
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeToDo(task)}
-                            >
-                              To-Do
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDoing(task)}
-                            >
-                              Doing
-                            </button>
-                            &nbsp;
-                            <button
-                              className="btn btn-outline-secondary"
-                              onClick={() => this.handleChangeDone(task)}
-                            >
-                              Done
-                            </button>
-                          </div>
-                          {/* Buttons */}
                         </div>
                       </li>
                     </ul>

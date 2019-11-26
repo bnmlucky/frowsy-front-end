@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "./App.css";
 import MainContent from "./components/MainContent";
 import NewUser from "./components/NewUser";
 import Home from "./components/Home.js";
 import Login from "./components/Login";
 import axios from "axios";
+// import Nav from "./components/Nav";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const baseURL = "http://localhost:3003";
 
@@ -15,12 +16,14 @@ class App extends Component {
     this.state = {
       tasks: [],
       loggedIn: false,
-      userid: ""
+      userid: "",
+      navToggle: false
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.getTasks = this.getTasks.bind(this);
   }
+
   componentDidMount() {
     const localStorageLength = localStorage.length > 0;
     {
@@ -71,64 +74,70 @@ class App extends Component {
       <Router>
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
-            <h1>F R O W S Y</h1>
-            <nav className="navigation">
-              <Link className="navigation-link" to="/Home">
-                Home
-              </Link>
-              <Link className="navigation-link" to="/NewUser">
-                Create Account
-              </Link>
-              <Link className="navigation-link" to="/LogIn">
-                Log In
-              </Link>
-              {localStorage.length > 0 && (
-                <Link className="navigation-link" to="/Tasks">
-                  My Tasks
+            <div className="FullNav">
+              <a className="navigation-link-head" className="h1" href="/Home">
+                <h1>F R O W S Y</h1>
+              </a>
+
+              <nav className="navigation">
+                <Link className="navigation-link" to="/NewUser">
+                  Create Account
                 </Link>
-              )}
-              {this.state.loggedIn && (
-                <button className="logout-button" onClick={this.handleLogOut}>
-                  Log Out
-                </button>
-              )}
-            </nav>
-            <Route path="/Home" exact component={Home} />
-            <Route
-              path="/NewUser"
-              render={props => (
-                <NewUser {...props} handleAddUser={this.handleAddUser} />
-              )}
-            />
-            <Route
-              path="/LogIn"
-              render={props => (
-                <Login {...props} handleLogin={this.handleLogin} />
-              )}
-            />
-            {this.state.loggedIn && (
+                {!this.state.loggedIn && (
+                  <Link className="navigation-link" to="/LogIn">
+                    Log In
+                  </Link>
+                )}
+                {localStorage.length > 0 && (
+                  <Link className="navigation-link" to="/Tasks">
+                    My Tasks
+                  </Link>
+                )}
+                {this.state.loggedIn && (
+                  <button className="logout-button" onClick={this.handleLogOut}>
+                    Log Out
+                  </button>
+                )}
+              </nav>
+
+              <Route path="/Home" exact component={Home} />
               <Route
-                path="/Tasks"
+                path="/NewUser"
                 render={props => (
-                  <MainContent
-                    {...props}
-                    userid={this.state.userid}
-                    tasks={this.state.tasks}
-                    getTasks={this.getTasks}
-                    logOut={this.handleLogOut}
-                  />
+                  <NewUser {...props} handleAddUser={this.handleAddUser} />
                 )}
               />
-            )}
-            {/* {this.state.loggedIn && (
+              <Route
+                path="/LogIn"
+                render={props => (
+                  <Login {...props} handleLogin={this.handleLogin} />
+                )}
+              />
+              {this.state.loggedIn && (
+                <Route
+                  path="/Tasks"
+                  render={props => (
+                    <MainContent
+                      {...props}
+                      userid={this.state.userid}
+                      tasks={this.state.tasks}
+                      getTasks={this.getTasks}
+                      logOut={this.handleLogOut}
+                    />
+                  )}
+                />
+              )}
+              {/* {this.state.loggedIn && (
               <button className="logout-button" onClick={this.handleLogOut}>
                 Log Out
               </button>
             )} */}
+            </div>
+            <footer>
+              Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia
+              Titova
+            </footer>
           </div>
-          <footer>
-            Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova
-          </footer>
         </div>
       </Router>
     );
