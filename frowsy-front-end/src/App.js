@@ -76,26 +76,30 @@ class App extends Component {
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
             <div className="FullNav">
-              <a className="navigation-link-head h1" href="/Home">
-                <h1>F R O W S Y</h1>
-              </a>
+              <h1>
+                <Link
+                  className="navigation-link-head "
+                  className="h1"
+                  to="/Home"
+                >
+                  F R O W S Y
+                </Link>
+              </h1>
+
               <nav className="navigation">
-                <Link className="navigation-link nav-item" to="/Home">
-                  Home
-              </Link>
                 <Link className="navigation-link nav-item" to="/NewUser">
                   Create Account
-              </Link>
+                </Link>
                 {!this.state.loggedIn && (
                   <Link className="navigation-link nav-item" to="/LogIn">
                     Log In
-                </Link>
+                  </Link>
                 )}
 
                 {localStorage.length > 0 ? (
                   <Link className="navigation-link nav-item" to="/Tasks">
                     My Tasks
-                </Link>
+                  </Link>
                 ) : (
                     <Redirect from="/Tasks" to="Home" />
                   )}
@@ -106,7 +110,7 @@ class App extends Component {
                     onClick={this.handleLogOut}
                   >
                     Log Out
-                </button>
+                  </button>
                 )}
               </nav>
               <Route path="/Home" exact component={Home} />
@@ -142,14 +146,14 @@ class App extends Component {
                   )}
                 />
               )}
-
             </div>
-            <footer>
-              Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
-          </footer>
           </div>
+          <footer>
+            Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
+          </footer>
         </div>
-      </Router>
+        </div>
+      </Router >
 
 
     );
