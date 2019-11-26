@@ -11,10 +11,6 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
-<<<<<<< HEAD
-=======
-
->>>>>>> 95f9b26a2644d93a1752a27f9874036aefefae8f
       toggleEditBtn: false
     };
     this.handleAddTask = this.handleAddTask.bind(this);
@@ -91,12 +87,12 @@ class MainContent extends Component {
     ev.preventDefault();
   }
   onDrop(ev, cat) {
-    let task = this.state.dragging;
+    // let task = this.state.dragging;
     // console.log(task._id);
     // console.log(cat);
     console.log(ev);
     console.log(cat);
-    console.log("this is task from state" + task);
+    // console.log("this is task from state" + task);
   }
   async handleChangeDone(task) {
     const taskId = task._id;
@@ -132,7 +128,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-          // onDrop={event => this.handleDrop(event)}
+            // onDrop={event => this.handleDrop(event)}
           >
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
@@ -143,7 +139,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={(event, task) => this.handleDrag(event, task)}
+                    // onDrag={(event, task) => this.handleDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -170,8 +166,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -213,7 +209,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-          // onDrop={(event, task) => this.handleDrop(event, task)}
+            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
@@ -224,7 +220,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={event => this.onDrag(event, task)}
+                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -251,8 +247,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -294,7 +290,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-          // onDrop={(event, task) => this.handleDrop(event, task)}
+            // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
@@ -305,7 +301,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                  // onDrag={event => this.onDrag(event, task)}
+                    // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -332,8 +328,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                              <p></p>
-                            )}
+                            <p></p>
+                          )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
