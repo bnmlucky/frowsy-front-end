@@ -16,8 +16,8 @@ As a user of Frowsy, We want the ability to create a new user, add tasks to our 
 
 ### Problems Encountered:
 
--Merging issues on Github
--Issues with create routes for tasks
+1. Merging issues on Github
+2. Issues with create routes for tasks
 
 ### Technologies Used:
 
