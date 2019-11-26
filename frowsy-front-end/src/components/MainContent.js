@@ -11,6 +11,7 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
+
       toggleEditBtn: false
     };
     this.handleAddTask = this.handleAddTask.bind(this);
@@ -128,7 +129,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-            // onDrop={event => this.handleDrop(event)}
+          // onDrop={event => this.handleDrop(event)}
           >
             <p className="title">TO DO</p>
             {this.props.tasks.map(task => {
@@ -139,7 +140,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={(event, task) => this.handleDrag(event, task)}
+                  // onDrag={(event, task) => this.handleDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -166,8 +167,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                            <p></p>
-                          )}
+                              <p></p>
+                            )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -209,7 +210,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-            // onDrop={(event, task) => this.handleDrop(event, task)}
+          // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DOING</p>
             {this.props.tasks.map(task => {
@@ -220,7 +221,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={event => this.onDrag(event, task)}
+                  // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -247,8 +248,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                            <p></p>
-                          )}
+                              <p></p>
+                            )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
@@ -290,7 +291,7 @@ class MainContent extends Component {
             onDrop={e => {
               this.onDrop(e, "complete");
             }}
-            // onDrop={(event, task) => this.handleDrop(event, task)}
+          // onDrop={(event, task) => this.handleDrop(event, task)}
           >
             <p className="title">DONE</p>
             {this.props.tasks.map(task => {
@@ -301,7 +302,7 @@ class MainContent extends Component {
                     key={task._id}
                     onDragStart={e => this.onDragStart(e, task)}
                     draggable
-                    // onDrag={event => this.onDrag(event, task)}
+                  // onDrag={event => this.onDrag(event, task)}
                   >
                     <ul className="flex-item-2">
                       <li>
@@ -328,8 +329,8 @@ class MainContent extends Component {
                               getTasks={this.props.getTasks}
                             />
                           ) : (
-                            <p></p>
-                          )}
+                              <p></p>
+                            )}
                           {/* Edit Button */}
                           {/* Buttons */}
                           <div className="moveButtons">
