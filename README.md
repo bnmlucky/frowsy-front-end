@@ -1,18 +1,21 @@
 # FROWSY
 
-##Link to Live Site:
+## Link to Live Site:
+
 Picture of Home Page:
 Picture of Login:
 Picture of Tasks:
 
-###What is FROWSY?:
+### What is FROWSY?:
+
 Frowsy is a task application that allows you to visually organize your to-do list by three categories: to-do, doing, and done.
 
-###User Stories:
+### User Stories:
 
-###Problems Encountered:
+### Problems Encountered:
 
-###Technologies Used:
+### Technologies Used:
+
 -React
 -Express
 -BootStrap
