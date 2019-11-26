@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "./App.css";
 import MainContent from "./components/MainContent";
 import NewUser from "./components/NewUser";
 import Home from "./components/Home.js";
 import Login from "./components/Login";
 import axios from "axios";
+import "./App.css";
 import { Redirect } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 const baseURL = "http://localhost:3003";
@@ -16,12 +16,14 @@ class App extends Component {
     this.state = {
       tasks: [],
       loggedIn: false,
-      userid: ""
+      userid: "",
+      navToggle: false
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogOut = this.handleLogOut.bind(this);
     this.getTasks = this.getTasks.bind(this);
   }
+
   componentDidMount() {
     const localStorageLength = localStorage.length > 0;
     {
@@ -73,7 +75,10 @@ class App extends Component {
       <Router>
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
-            <h1>F R O W S Y</h1>
+            <div className="FullNav">
+              <a className="navigation-link-head" className="h1" href="/Home">
+                <h1>F R O W S Y</h1>
+              </a>
             <nav className="navigation">
               <Link className="navigation-link nav-item" to="/Home">
                 Home
@@ -123,20 +128,6 @@ class App extends Component {
               />
             )}
 
-            {this.state.loggedIn && (
-              <Route
-                path="/Tasks"
-                render={props => (
-                  <MainContent
-                    {...props}
-                    userid={this.state.userid}
-                    tasks={this.state.tasks}
-                    getTasks={this.getTasks}
-                    logOut={this.handleLogOut}
-                  />
-                )}
-              />
-            )}
           </div>
           <footer>
             Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
