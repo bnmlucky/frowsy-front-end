@@ -110,22 +110,17 @@ class App extends Component {
                 )}
               </nav>
               <Route path="/Home" exact component={Home} />
-              <Route
-                path="/NewUser"
-                render={props => (
-                  <NewUser {...props} handleAddUser={this.handleAddUser} />
-                )}
-              />
               {this.state.loggedIn ? (
                 <Redirect from="/LogIn" to="/Tasks" />
               ) : (
                 <Route
-                  path="/LogIn"
+                  path="/NewUser"
                   render={props => (
-                    <Login {...props} handleLogin={this.handleLogin} />
+                    <NewUser {...props} handleAddUser={this.handleAddUser} />
                   )}
                 />
               )}
+
               {this.state.loggedIn && (
                 <Route
                   path="/Tasks"
@@ -141,9 +136,6 @@ class App extends Component {
                 />
               )}
             </div>
-            <footer>
-              Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
-            </footer>
           </div>
         </div>
       </Router>
