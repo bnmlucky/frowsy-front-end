@@ -21,15 +21,17 @@ As a user of Frowsy, We want the ability to create a new user, add tasks to our 
 
 ### Technologies Used:
 
--React
--Express
--BootStrap
--React Router
--React DND
--Axios
-###Future Updates:
--Editing User
--Deleting User
--Editing Board Names
--Editing order of task appearance on the boards
--Editing Number of Boards
+1. React
+2. Express
+3. BootStrap
+4. React Router
+5. React DND
+6. Axios
+
+### Future Updates:
+
+1. Editing User
+2. Deleting User
+3. Editing Board Names
+4. Editing order of task appearance on the boards
+5. Editing Number of Boards
