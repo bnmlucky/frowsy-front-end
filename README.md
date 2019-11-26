@@ -18,6 +18,7 @@ As a user of Frowsy, We want the ability to create a new user, add tasks to our 
 
 1. Merging issues on Github
 2. Issues with create routes for tasks
+3. Solving issues with unknown limitations
 
 ### Technologies Used:
 
@@ -27,6 +28,9 @@ As a user of Frowsy, We want the ability to create a new user, add tasks to our 
 4. React Router
 5. React DND
 6. Axios
+7. MongoDB
+8. Mongoose
+9. Node.js
 
 ### Future Updates:
 
@@ -35,3 +39,4 @@ As a user of Frowsy, We want the ability to create a new user, add tasks to our 
 3. Editing Board Names
 4. Editing order of task appearance on the boards
 5. Editing Number of Boards
+6. Shared board capabilities
