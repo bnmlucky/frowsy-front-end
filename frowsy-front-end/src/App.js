@@ -127,7 +127,7 @@ class App extends Component {
             )} */}
           </div>
           <footer>
-            Created by Alice D'Archangelo, Guadalupe Ramirez and Natalia Titova
+            Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
           </footer>
         </div>
       </Router>
