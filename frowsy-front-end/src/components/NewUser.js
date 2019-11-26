@@ -33,11 +33,12 @@ class NewUser extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="newUserForm">
           <label htmlFor="username"></label>
           <input
             type="text"
             id="username"
+            className="form-control"
             name="username"
             onChange={this.handleUserNameChange}
             value={this.state.username}
@@ -47,11 +48,12 @@ class NewUser extends Component {
             type="text"
             id="password"
             name="password"
+            className="form-control"
             onChange={this.handlePasswordChange}
             value={this.state.password}
             placeholder="password"
           />
-          <input type="submit" value="Register" />
+          <input type="submit" className="createAccount" value="Register" />
         </form>
       </div>
     );
