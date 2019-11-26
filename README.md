@@ -12,21 +12,26 @@ Frowsy is a task application that allows you to visually organize your to-do lis
 
 ### User Story:
 
-As a user of Frowsy, We want the ability to create a new user, add tasks to our account, move them to different boards, edit them, and delete them so that we can user the site efficiently. End user goal: be able to navigate the site .Measurement of success: user can use site easily with no instructions.
+As a user of Frowsy, We want the ability to create a new user, add tasks to our account, move them to different boards, edit them, and delete them so that we can use the site efficiently. End user goal: be able to navigate the site .Measurement of success: user can use site easily with no instructions.
 
 ### Problems Encountered:
 
+1. Merging issues on Github
+2. Issues with create routes for tasks
+
 ### Technologies Used:
 
--React
--Express
--BootStrap
--React Router
--React DND
--Axios
-###Future Updates:
--Editing User
--Deleting User
--Editing Board Names
--Editing order of task appearance on the boards
--Editing Number of Boards
+1. React
+2. Express
+3. BootStrap
+4. React Router
+5. React DND
+6. Axios
+
+### Future Updates:
+
+1. Editing User
+2. Deleting User
+3. Editing Board Names
+4. Editing order of task appearance on the boards
+5. Editing Number of Boards
