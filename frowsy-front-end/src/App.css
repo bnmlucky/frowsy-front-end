@@ -191,7 +191,7 @@ footer {
 }
 
 @media (max-width: 680px) {
-  .navigation-link {
+  .navigation-link, 
 .createAccount {
   border: 1px solid#ff6528;
   padding: 10px;
@@ -200,6 +200,7 @@ footer {
   background-color: white;
   margin-top: 4%;
 }
+  }
 .createAccount:hover {
   background-color: #ff6528;
   color: white;
