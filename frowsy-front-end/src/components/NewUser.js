@@ -53,7 +53,7 @@ class NewUser extends Component {
             value={this.state.password}
             placeholder="password"
           />
-          <input type="submit" className="createAccount" value="Register" />
+          <input type="submit" className="login-button" value="Register" />
         </form>
       </div>
     );
