@@ -2,10 +2,7 @@
 
 ## Link to Live Site:
 
-Picture of Home Page:
-Picture of Login:
-Picture of Tasks:
-![Image of Yaktocat](./images/frowsytaskpage.png)
+![Image of Yaktocat](./images/frowsyhomepage.png)
 
 ### What is FROWSY?:
 
