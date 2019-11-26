@@ -75,26 +75,26 @@ class App extends Component {
           <div className="topDivHeaderRegisterLogin">
             <h1>F R O W S Y</h1>
             <nav className="navigation">
-              <Link className="navigation-link" to="/Home">
+              <Link className="navigation-link nav-item" to="/Home">
                 Home
               </Link>
-              <Link className="navigation-link" to="/NewUser">
+              <Link className="navigation-link nav-item" to="/NewUser">
                 Create Account
               </Link>
               {!this.state.loggedIn && (
-                <Link className="navigation-link" to="/LogIn">
+                <Link className="navigation-link nav-item" to="/LogIn">
                   Log In
                 </Link>
               )}
 
               {localStorage.length > 0 && (
-                <Link className="navigation-link" to="/Tasks">
+                <Link className="navigation-link nav-item" to="/Tasks">
                   My Tasks
                 </Link>
               )}
 
               {this.state.loggedIn && (
-                <button className="logout-button" onClick={this.handleLogOut}>
+                <button className="logout-button nav-item" onClick={this.handleLogOut}>
                   Log Out
                 </button>
               )}
@@ -110,13 +110,13 @@ class App extends Component {
             {this.state.loggedIn ? (
               <Redirect from="/LogIn" to="/Tasks" />
             ) : (
-              <Route
-                path="/LogIn"
-                render={props => (
-                  <Login {...props} handleLogin={this.handleLogin} />
-                )}
-              />
-            )}
+                <Route
+                  path="/LogIn"
+                  render={props => (
+                    <Login {...props} handleLogin={this.handleLogin} />
+                  )}
+                />
+              )}
 
             {this.state.loggedIn && (
               <Route
