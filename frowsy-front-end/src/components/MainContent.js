@@ -11,11 +11,12 @@ class MainContent extends Component {
       user: "",
       loggedIn: true,
       tasks: [],
-      dragging: ""
+      dragging: "",
+      toggleEditBtn: false
     };
     this.handleAddTask = this.handleAddTask.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
-
+    this.handleEditTask = this.handleEditTask.bind(this);
     this.handleChangeDoing = this.handleChangeDoing.bind(this);
     this.handleChangeToDo = this.handleChangeToDo.bind(this);
     this.handleChangeDone = this.handleChangeDone.bind(this);
@@ -24,6 +25,11 @@ class MainContent extends Component {
   handleAddTask(task) {
     console.log(task);
     this.setState({ tasks: [...this.state.tasks, task] });
+  }
+  handleEditTask() {
+    this.setState(prevState => ({
+      toggleEditBtn: !prevState.toggleEditBtn
+    }));
   }
   async handleDeleteTask(task) {
     const userID = await localStorage.getItem("user");
@@ -125,19 +131,51 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
                           </button>{" "}
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={this.props.getTasks}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
+                          {/* Buttons */}
+                          <div className="moveButtons">
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeToDo(task)}
+                            >
+                              To-Do
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDoing(task)}
+                            >
+                              Doing
+                            </button>
+                            &nbsp;
+                            <button
+                              className="btn btn-outline-secondary"
+                              onClick={() => this.handleChangeDone(task)}
+                            >
+                              Done
+                            </button>
+                          </div>
+                          {/* Buttons */}
                         </div>
                         &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
-                        <button onClick={() => this.handleChangeDoing(task)}>
-                          ->
-                        </button>
+                        {/* <EditTask task={task} getTasks={this.props.getTasks} />
+                        <button onClick={() => this.handleChangeDoing(task)}> */}
+                        {/* </button> */}
                       </li>
                     </ul>
                   </div>
@@ -173,16 +211,24 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
                           </button>{" "}
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={this.props.getTasks}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
                         </div>
-                        &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
+                        &nbsp;{" "}
                         <button onClick={() => this.handleChangeToDo(task)}>
                           To-Do
                         </button>
@@ -224,16 +270,24 @@ class MainContent extends Component {
                           >
                             &#128465;
                           </button>{" "}
+                          {/* Edit Button */}
                           <button
                             typeof="button"
                             className="btn btn-outline-secondary"
-                            onClick={this.handleEditTask}
+                            onClick={() => this.handleEditTask(task)}
                           >
                             ✎
                           </button>{" "}
+                          {this.state.toggleEditBtn ? (
+                            <EditTask
+                              task={task}
+                              getTasks={this.props.getTasks}
+                            />
+                          ) : (
+                            <p></p>
+                          )}
                         </div>
                         &nbsp;
-                        <EditTask task={task} getTasks={this.props.getTasks} />
                         <button onClick={() => this.handleChangeDoing(task)}>
                           Doing
                         </button>
