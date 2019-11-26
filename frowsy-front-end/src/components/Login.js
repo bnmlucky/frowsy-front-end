@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 const baseURL = "http://localhost:3003";
-
+// import { Redirect } from "react-router";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +21,7 @@ class Login extends Component {
     this.setState({ password: event.currentTarget.value });
   }
   async handleSubmit(event) {
-    console.log('hitting submit route')
+    console.log("hitting submit route");
     event.preventDefault();
 
     const response = await axios.post(`${baseURL}/sessions`, {
