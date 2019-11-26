@@ -19,12 +19,13 @@ class EditTask extends Component {
     event.preventDefault();
     const userId = localStorage.getItem("user");
     const taskId = this.props.task._id;
+    const progress = this.props.task.progress;
     const description = this.state.description
       ? this.state.description
       : this.props.task.description;
     const response = await axios.put(`${baseURL}/tasks/${userId}/${taskId}`, {
       description: description,
-      assigned: "todo"
+      assigned: progress
     });
     console.log(response);
     this.setState({
