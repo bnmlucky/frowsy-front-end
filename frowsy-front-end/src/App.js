@@ -76,14 +76,17 @@ class App extends Component {
         <div className="appJs-main-div">
           <div className="topDivHeaderRegisterLogin">
             <div className="FullNav">
-              <a className="navigation-link-head" className="h1" href="/Home">
-                <h1>F R O W S Y</h1>
-              </a>
+              <h1>
+                <Link
+                  className="navigation-link-head "
+                  className="h1"
+                  to="/Home"
+                >
+                  F R O W S Y
+                </Link>
+              </h1>
 
               <nav className="navigation">
-                <Link className="navigation-link nav-item" to="/Home">
-                  Home
-                </Link>
                 <Link className="navigation-link nav-item" to="/NewUser">
                   Create Account
                 </Link>
