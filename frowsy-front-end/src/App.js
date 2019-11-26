@@ -64,7 +64,7 @@ class App extends Component {
       loggedIn: true,
       userid: user.foundUser._id
     });
-    // <Redirect to="/Tasks" />;
+
     console.log(this.state.loggedIn);
   }
   //RENDER/RETURN
@@ -92,6 +92,7 @@ class App extends Component {
                   My Tasks
                 </Link>
               )}
+
               {this.state.loggedIn && (
                 <button className="logout-button" onClick={this.handleLogOut}>
                   Log Out
@@ -105,7 +106,10 @@ class App extends Component {
                 <NewUser {...props} handleAddUser={this.handleAddUser} />
               )}
             />
-            {!this.state.loggedIn && (
+
+            {this.state.loggedIn ? (
+              <Redirect from="/LogIn" to="/Tasks" />
+            ) : (
               <Route
                 path="/LogIn"
                 render={props => (
@@ -128,11 +132,6 @@ class App extends Component {
                 )}
               />
             )}
-            {/* {this.state.loggedIn && (
-              <button className="logout-button" onClick={this.handleLogOut}>
-                Log Out
-              </button>
-            )} */}
           </div>
           <footer>
             Created by Alice D'Arcangelo, Guadalupe Ramirez and Natalia Titova
